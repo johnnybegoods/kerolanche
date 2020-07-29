@@ -58,6 +58,9 @@ body{
     .whats img{
         width: 50%;
     }
+    .conteudo{
+        margin-left: 0%;
+    }
   }
 
   @media only screen and (max-width: 458px) {

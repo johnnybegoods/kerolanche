@@ -1,0 +1,92 @@
+body{
+    background-color: black;
+}
+.spam-top{display: none;}
+.conteudo{
+    width: 70%;
+    margin-left: 15%;
+}
+.conteudo img{
+    width: 100%;
+}
+.conteudo li{
+    margin-top: 2%;
+}
+.whats{
+    position: fixed;
+    top: 0;
+}
+.whats img{
+    width: 30%;
+}
+.spam{
+    width: 14%;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+.spam img{
+    width: 100%;
+    margin-top: 23%;
+}
+
+@media only screen and (max-width: 1669px) {
+    .conteudo{
+        margin-left: 10%;
+    }
+    .whats img{
+        width: 25%;
+    }
+    .spam{
+        width: 19%;
+    }
+    .spam img{
+        margin-top: 17%;
+    }
+  }
+
+  @media only screen and (max-width: 1121px) {
+    .spam{
+        top: 2%;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+   
+    .spam-top img{
+        width: 32.7%;
+    }
+  }
+
+  @media only screen and (max-width: 458px) {
+    .spam{
+        display: none;
+    }
+    .conteudo{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .spam-top{
+        display: block;
+        width: 100%;
+    }
+    .spam-top img{
+        width: 32%;
+    }
+  }
+
+  @media only screen and (max-width: 458px) {
+    .spam{
+        display: none;
+    }
+    .conteudo{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .spam-top{
+        display: block;
+        width: 100%;
+    }
+    .spam-top img{
+        width: 31%;
+    }
+  }

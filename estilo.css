@@ -1,98 +1,368 @@
-body{
-    background-color: black;
+
+::-webkit-scrollbar { 
+    display: none; 
 }
-.spam-top{display: none;}
-.conteudo{
-    width: 70%;
-    margin-left: 15%;
-}
-.conteudo img{
+.main{
     width: 100%;
+    height: 100vh;
+    background-color: black;
+    overflow: scroll;
 }
-.conteudo li{
-    margin-top: 2%;
+.publicidade{
+    width: 100%;
+    height: auto;
+    background-color: rgb(0, 23, 128);
 }
-.whats{
-    position: fixed;
-    top: 0;
+.publicidade p{
+    color:white;
+    text-align: center;
 }
-.whats img{
-    width: 30%;
+.destaques{
+    width: 100%;
+    height: 74vh;
+    background-color: rgb(64, 102, 71);
+    border-left-style:ridge ;
+    background-repeat: round;
 }
-.spam{
-    width: 14%;
-    right: 0;
-    top: 0;
+#hamb, #titulo{
+    width: 8%;
+    left: 0;
+    top: 10%;
     position: absolute;
 }
-.spam img{
-    width: 100%;
-    margin-top: 23%;
-}
+#titulo{
+    top: 5%;
+    width: 50%;
 
-@media only screen and (max-width: 1669px) {
-    .conteudo{
+}
+.skew {
+    -webkit-transform: skew(0deg); /* Chrome, Opera */
+    -ms-transform: skew(0deg); /* IE */
+    transform: skew(0deg); /* Padrão */
+}
+.negative {
+    -webkit-transform: skew(-40deg); /* Chrome, Opera */
+    -ms-transform: skew(-40deg); /* IE */
+    transform: skew(-40deg); /* Padrão */
+}
+.destaque{
+    width: 20%;
+    height: 74vh;
+    -webkit-transform: skew(40deg); /* Chrome, Opera */
+    -ms-transform: skew(40deg); /* IE */
+    transform: skew(40deg); /* Padrão */
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 10%;
+    border-radius: 15px;
+}
+.destaque img{
+    width: 100%;
+}
+.footer{
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    border-style: double;
+    border-color:green
+}
+.footer a{
+    text-decoration: none;
+    text-align: center;
+}
+.whatsapp{
+    width: 10%;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    align-items: center;
+    float: left;
+    border-style: double;
+    border-color:green;
+    transition: all;
+    transition-duration: 1s;
+}
+.whatsapp:hover{
+    /*background-image: url("./assets/botom.gif");*/
+    /*background-repeat: round;*/
+    border-radius: 120px;
+}
+.whatsapp h5{
+    color:white;
+}
+.whatsapp img{
+    width: 100%;
+}
+.cardapio{
+    width: 80%;
+    height: 10vh;
+    margin-top: 2%;
+    margin-left: 10%;
+    align-items: center;
+    transition: all;
+    transition-duration: 1s;
+}
+.cardapio img{
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 2%;
+}
+.cardapio:hover h5{
+    color:white;
+}
+@media (max-width: 1276px){
+    .destaques{
+        height: 68vh;
+    }
+}
+@media (max-width: 1231px){
+    .destaque{
+        width: 25%;
+        margin-left: 6%;
+        overflow: visible;
+        float: left;
+    }
+    .cardapio{
+        margin-top: 5%;
+        float: left;
+    }
+} 
+
+@media (max-width: 1045px){
+    .destaque{
+        width: 20%;
         margin-left: 10%;
     }
-    .whats img{
+    .cardapio{
+        margin-top: 0%;
+    }
+    .whatsapp h5{
+        font-size: 12pt;
+    }
+}
+@media (max-width: 1011px){
+    .destaque{
+        width: 22%;
+        margin-left: 8%;
+    }
+    .cardapio{
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 981px){
+   .destaques{
+       height: 60vh;
+   }
+   .destaques{
+       padding-left: 5%;
+   }
+   .cardapio{
+       margin-top: -5%;
+   }
+}
+
+@media (max-width: 860px){
+    .destaque{
+        width: 25%;
+        margin-left: 7%;
+    }
+    .destaques{
+        height: 60vh;
+    }
+    .destaques{
+        padding-left: 5%;
+    }
+    .cardapio{
+        margin-top: -5%;
+    }
+ }
+
+ @media (max-width: 780px){
+    .destaque{
+        width: 30%;
+        margin-left: 3%;
+    }
+    .destaques{
+        height: 60vh;
+    }
+    .destaques{
+        padding-left: 5%;
+    }
+    .cardapio{
+        margin-top: -5%;
+    }
+    .whatsapp{
+        width: 15%;
+    }
+    .whatsapp h5{
+        font-size: 16pt;
+    }
+ }
+ @media (max-width: 740px){
+    .whatsapp h5{
+        font-size: 14pt;
+    }
+ }
+@media (max-width: 670px){
+    .destaques{
+        height: 50vh;
+    }
+    .cardapio{
+        margin-top: -15%;
+    }
+    .destaques{
+        padding-left: 15%;
+    }
+ }
+
+ @media (max-width: 610px){
+    .destaques{
+        height: 50vh;
+        padding-left: 15%;
+        -webkit-transform: skew(0deg); /* Chrome, Opera */
+        -ms-transform: skew(0deg); /* IE */
+        transform: skew(0deg); /* Padrão */
+        padding-left: 0;
+    }
+    .cardapio{
+        margin-top: -15%;
+    }
+    .destaque{
+        width: 30%;
+        margin-left: 3%;
+        -webkit-transform: skew(0deg); /* Chrome, Opera */
+        -ms-transform: skew(0deg); /* IE */
+        transform: skew(0deg); /* Padrão */
+    }
+    .whatsapp{
+        width: 20%;
+    }
+    .whatsapp h5{
+        font-size: 12pt;
+    }
+ }
+
+ @media (max-width: 541px){
+    .destaques{
+        height: 40vh;
+    }
+    .cardapio{
+        margin-top: -20%;
+    }
+ }
+ @media (max-width: 507px){
+    .destaques{
+        height: 40vh;
+    }
+    .cardapio{
+        margin-top: -25%;
+    }
+ }
+ @media (max-width: 457px){
+    .destaques{
+        height: 30vh;
+    }
+    .cardapio{
+        margin-top: -40%;
+    }
+    .whatsapp{
         width: 25%;
     }
-    .spam{
-        width: 19%;
-    }
-    .spam img{
-        margin-top: 17%;
-    }
-  }
+ }
 
-  @media only screen and (max-width: 1121px) {
-    .spam{
-        top: 2%;
+ @media (max-width: 414px){
+    .destaques{
+        height: 30vh;
     }
-  }
-  @media only screen and (max-width: 500px) {
-   
-    .spam-top img{
-        width: 32.7%;
+    .cardapio{
+        margin-top: -70%;
     }
-    .whats img{
-        width: 50%;
-    }
-    .conteudo{
-        margin-left: 0%;
-    }
-  }
+ }
 
-  @media only screen and (max-width: 458px) {
-    .spam{
-        display: none;
+ @media (max-width: 375px){
+    .destaques{
+        height: 30vh;
     }
-    .conteudo{
-        width: 90%;
-        margin-left: 5%;
+    .cardapio{
+        margin-top: -70%;
     }
-    .spam-top{
-        display: block;
-        width: 100%;
+    .whatsapp h5{
+        font-size: 10pt ;
     }
-    .spam-top img{
-        width: 32%;
+ }
+ @media (max-width: 320px){
+    .destaques{
+        height: 30vh;
     }
-  }
+    .cardapio{
+        margin-top: -70%;
+    }
+ }
+ @media (max-width: 640px) and (orientation:landscape){
+     .cardapio{
+         margin-top: 10%;
+     }
+     .destaques{
+         padding-left: 10%;
+     }
+     .destaque{
+         margin-left: 3%;
+     }
+ }
 
-  @media only screen and (max-width: 458px) {
-    .spam{
-        display: none;
+ @media (max-width: 731px) and (orientation:landscape){
+    .cardapio{
+        margin-top: 15%;
     }
-    .conteudo{
-        width: 90%;
-        margin-left: 5%;
+    .destaques{
+        padding-left: 10%;
     }
-    .spam-top{
-        display: block;
-        width: 100%;
+    .destaque{
+        margin-left: 3%;
     }
-    .spam-top img{
-        width: 31%;
+}
+@media (max-width: 823px) and (orientation:landscape){
+    .cardapio{
+        margin-top: 8%;
     }
-  }
+    .destaques{
+        padding-left: 18%;
+    }
+    .destaque{
+        margin-left: 3%;
+    }
+}
+@media (max-width: 568px) and (orientation:landscape){
+    .cardapio{
+        margin-top: 15%;
+    }
+    .destaques{
+        padding-left: 0;
+    }
+    .destaque{
+        margin-left: 3%;
+    }
+}
+@media (max-width: 667px) and (orientation:landscape){
+    .cardapio{
+        margin-top: 15%;
+    }
+    .destaques{
+        padding-left: 10%;
+    }
+    .destaque{
+        margin-left: 3%;
+    }
+}
+@media (max-width: 736px) and (orientation:landscape){
+    .cardapio{
+        margin-top: 15%;
+    }
+    .destaques{
+        padding-left: 8%;
+    }
+    .destaque{
+        margin-left: 3%;
+    }
+}

@@ -10,12 +10,17 @@
 }
 .publicidade{
     width: 100%;
-    height: auto;
+    height: 35vh;
     background-color: rgb(0, 23, 128);
+    overflow: hidden;
 }
 .publicidade p{
     color:white;
     text-align: center;
+    float: left;
+}
+.publicidade img{
+    width: 5%;
 }
 .destaques{
     width: 100%;
@@ -24,11 +29,12 @@
     border-left-style:ridge ;
     background-repeat: round;
 }
-#hamb, #titulo{
-    width: 8%;
-    left: 0;
-    top: 10%;
-    position: absolute;
+#titulo{
+    margin-left: 23%;
+}
+#hamb{
+    margin-left: 44%;
+    margin-top: 10%;
 }
 #titulo{
     top: 5%;
@@ -114,6 +120,9 @@
     .destaques{
         height: 68vh;
     }
+    .publicidade{
+        height: 30vh;
+    }
 }
 @media (max-width: 1231px){
     .destaque{
@@ -139,6 +148,11 @@
     .whatsapp h5{
         font-size: 12pt;
     }
+    #titulo{
+        width: 70%;
+        margin-left: 18%;
+    }
+
 }
 @media (max-width: 1011px){
     .destaque{
@@ -198,6 +212,10 @@
     .whatsapp h5{
         font-size: 16pt;
     }
+    #titulo{
+        width: 80%;
+        margin-left: 13%;
+    }
  }
  @media (max-width: 740px){
     .whatsapp h5{
@@ -241,6 +259,10 @@
     .whatsapp h5{
         font-size: 12pt;
     }
+    #titulo{
+        width: 100%;
+        margin-left: 3%;
+    }
  }
 
  @media (max-width: 541px){
@@ -269,6 +291,10 @@
     .whatsapp{
         width: 25%;
     }
+    #titulo{
+        width: 120%;
+        margin-left: -10%;
+    }
  }
 
  @media (max-width: 414px){
@@ -290,6 +316,10 @@
     .whatsapp h5{
         font-size: 10pt ;
     }
+    #titulo{
+        width: 150%;
+        margin-left: -25%;
+    }
  }
  @media (max-width: 320px){
     .destaques{
@@ -308,6 +338,9 @@
      }
      .destaque{
          margin-left: 3%;
+     }
+     .publicidade{
+         height: 50vh;
      }
  }
 
@@ -332,6 +365,9 @@
     .destaque{
         margin-left: 3%;
     }
+    .publicidade{
+        height: 50vh;
+    }
 }
 @media (max-width: 568px) and (orientation:landscape){
     .cardapio{
@@ -342,6 +378,9 @@
     }
     .destaque{
         margin-left: 3%;
+    }
+    .publicidade{
+        height: 60vh;
     }
 }
 @media (max-width: 667px) and (orientation:landscape){

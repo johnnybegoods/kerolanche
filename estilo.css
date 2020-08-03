@@ -1,98 +1,28 @@
-body{
-    background-color: black;
-}
-.spam-top{display: none;}
-.conteudo{
-    width: 70%;
-    margin-left: 15%;
-}
-.conteudo img{
+.head, .content, .footer{
     width: 100%;
 }
-.conteudo li{
-    margin-top: 2%;
+.head{
+    height: 70vh;
+    background-color: rgb(187, 151, 73);
 }
-.whats{
-    position: fixed;
-    top: 0;
-}
-.whats img{
+.head img{
     width: 30%;
 }
-.spam{
-    width: 14%;
-    right: 0;
-    top: 0;
-    position: absolute;
+.master-head{
+    height: 6vh;
+    background-color: rgb(199, 202, 202);
 }
-.spam img{
-    width: 100%;
-    margin-top: 23%;
+.master-head ul{
+    margin-left: 12%;
 }
-
-@media only screen and (max-width: 1669px) {
-    .conteudo{
-        margin-left: 10%;
-    }
-    .whats img{
-        width: 25%;
-    }
-    .spam{
-        width: 19%;
-    }
-    .spam img{
-        margin-top: 17%;
-    }
-  }
-
-  @media only screen and (max-width: 1121px) {
-    .spam{
-        top: 2%;
-    }
-  }
-  @media only screen and (max-width: 500px) {
-   
-    .spam-top img{
-        width: 32.7%;
-    }
-    .whats img{
-        width: 50%;
-    }
-    .conteudo{
-        margin-left: 0%;
-    }
-  }
-
-  @media only screen and (max-width: 458px) {
-    .spam{
-        display: none;
-    }
-    .conteudo{
-        width: 90%;
-        margin-left: 5%;
-    }
-    .spam-top{
-        display: block;
-        width: 100%;
-    }
-    .spam-top img{
-        width: 32%;
-    }
-  }
-
-  @media only screen and (max-width: 458px) {
-    .spam{
-        display: none;
-    }
-    .conteudo{
-        width: 90%;
-        margin-left: 5%;
-    }
-    .spam-top{
-        display: block;
-        width: 100%;
-    }
-    .spam-top img{
-        width: 31%;
-    }
-  }
+.master-head li{
+    display: inline-block;
+    border-style: groove;
+    font-size: 18pt;
+    width: 15%;
+    padding-left: 1%;
+}
+.footer{
+    height: 20vh;
+    background-color: lightslategray;
+}

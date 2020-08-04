@@ -1,403 +1,341 @@
-
 ::-webkit-scrollbar { 
     display: none; 
 }
-.main{
+.head, .content, .footer{
     width: 100%;
-    height: 100vh;
-    background-color: black;
-    overflow: scroll;
 }
-.publicidade{
+.destaques-response{display: none;}
+#hamb{
+    width: 10%;
+    position: absolute;
+}
+.head{
     width: 100%;
-    height: 35vh;
-    background-color: rgb(0, 23, 128);
+    height: 15vh;
+    float: left;
+    background-color: blue;
     overflow: hidden;
 }
-.publicidade p{
-    color:white;
-    text-align: center;
-    float: left;
+.head img{
+    width: 100%;
 }
-.publicidade img{
-    width: 5%;
+#titulo{
+    width: 17%;
+    position: absolute;
+    top: -6%;
+    left: 40%;
+    top: 0.5%;
 }
 .destaques{
     width: 100%;
-    height: 74vh;
-    background-color: rgb(64, 102, 71);
-    border-left-style:ridge ;
-    background-repeat: round;
+    height: auto;
+    background-color: rgb(200, 211, 149);
+    background-image: url("./assets/fundo.png");
+    background-repeat: repeat;
+    float: left;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    transition: all;
+    transition-duration: 2s;
+    overflow: scroll;
 }
-#titulo{
-    margin-left: 23%;
-}
-#titulo{
-    top: 5%;
-    width: 50%;
 
-}
-.skew {
-    -webkit-transform: skew(0deg); /* Chrome, Opera */
-    -ms-transform: skew(0deg); /* IE */
-    transform: skew(0deg); /* Padrão */
-}
-.negative {
-    -webkit-transform: skew(-40deg); /* Chrome, Opera */
-    -ms-transform: skew(-40deg); /* IE */
-    transform: skew(-40deg); /* Padrão */
-}
 .destaque{
-    width: 20%;
-    height: 74vh;
-    -webkit-transform: skew(40deg); /* Chrome, Opera */
-    -ms-transform: skew(40deg); /* IE */
-    transform: skew(40deg); /* Padrão */
-    overflow: hidden;
-    display: inline-block;
-    margin-left: 10%;
-    border-radius: 15px;
+    width: 59%;
+    height: 70vh;
+    background-color: khaki;
+    display: block;
+    float: left;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    background-image: url("./assets/promo.gif");
+    background-repeat: round;
+    border-style: double;
+}
+.destaque1{
+    display: block;
+    width: 40%;
+    height: 69vh;
+    float: left;
 }
 .destaque img{
     width: 100%;
 }
-.footer{
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-    border-style: double;
-    border-color:green
-}
-.footer a{
-    text-decoration: none;
-    text-align: center;
-}
-.whatsapp{
+.whats{
     width: 10%;
+    overflow: hidden;
     position: fixed;
-    bottom:0;
-    left: 0;
-    align-items: center;
-    float: left;
-    border-style: double;
-    border-color:green;
+    bottom: 0;
     transition: all;
     transition-duration: 1s;
 }
-.whatsapp:hover{
-    /*background-image: url("./assets/botom.gif");*/
-    /*background-repeat: round;*/
-    border-radius: 120px;
-}
-.whatsapp h5{
-    color:white;
-}
-.whatsapp img{
+.whats img{
     width: 100%;
+}
+.content{
+    display: block;
+    height: 70vh;
+    background-color: rgb(200, 211, 149);
+    float: left;
+    background-image: url("./assets/fundo.png");
+    background-repeat: round;
+    text-align: center;
+    display: none;
+}
+.destaque1 h1{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 44pt;
+    text-align: center;
+    margin-top: 30%;
+}
+.content img{
+    width: 100%;
+}
+.destaque2{
+    width: 100%;
+}
+.destaque2 img{
+    width: 100%;
+}
+.link-cardapio{
+    display: block;
+    width: 100%;
+    height: auto;
+    float: left;
+}
+.link-cardapio a{
+    font-size: 30pt;
+    float: left;
+}
+.link img{
+    width: 100%;
+    border-radius: 25px;
+    transition: all;
+    transition-duration: 1s;
+}
+.link{
+    overflow: hidden;
+    width: 10%; 
+    height: 40vh;
+    text-align: center;
+    margin-left: 45%;
+    margin-top: 5%;
+    transition: all;
+    transition-duration: 2s;
+}
+.link:hover{cursor: pointer;}
+.link:hover img{
+    border-style: double;
+    border-color: green;
+    transition: all;
+    transition-duration: 1s;
+}
+.link p{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 22pt;
+    font-weight: bold;
+}
+.link:hover p{
+    color: green;
+}
+.whats:hover{
+    cursor: pointer;
+    width: 20%;
 }
 .cardapio{
-    width: 80%;
-    height: 10vh;
-    margin-top: 2%;
-    margin-left: 10%;
-    align-items: center;
+    width: 50%;
+    border-style: double;
+    height: 0vh;
+    overflow: scroll;
+    margin-left: 25%;
     transition: all;
-    transition-duration: 1s;
+    transition-duration: 2s;
 }
-.cardapio img{
+.cardapio2{
+    margin-left: 0;
+}
+.cardapio img, .cardapio2 img{
     width: 100%;
-    border-radius: 15px;
-    margin-top: 2%;
 }
-.cardapio:hover h5{
-    color:white;
-}
-@media (max-width: 1276px){
-    .destaques{
-        height: 68vh;
-    }
-    .publicidade{
-        height: 30vh;
-    }
-}
-@media (max-width: 1231px){
-    .destaque{
-        width: 25%;
-        margin-left: 6%;
-        overflow: visible;
-        float: left;
-    }
-    .cardapio{
-        margin-top: 5%;
-        float: left;
-    }
-} 
-
-@media (max-width: 1045px){
-    .destaque{
-        width: 20%;
-        margin-left: 10%;
-    }
-    .cardapio{
-        margin-top: 0%;
-    }
-    .whatsapp h5{
-        font-size: 12pt;
-    }
+@media (max-width: 1000px){
     #titulo{
-        width: 70%;
-        margin-left: 18%;
-    }
-
-}
-@media (max-width: 1011px){
-    .destaque{
-        width: 22%;
-        margin-left: 8%;
-    }
-    .cardapio{
-        margin-top: 0;
-    }
-}
-
-@media (max-width: 981px){
-   .destaques{
-       height: 60vh;
-   }
-   .destaques{
-       padding-left: 5%;
-   }
-   .cardapio{
-       margin-top: -5%;
-   }
-}
-
-@media (max-width: 860px){
-    .destaque{
         width: 25%;
-        margin-left: 7%;
     }
-    .destaques{
-        height: 60vh;
-    }
-    .destaques{
-        padding-left: 5%;
-    }
-    .cardapio{
-        margin-top: -5%;
-    }
- }
-
- @media (max-width: 780px){
-    .destaque{
-        width: 30%;
-        margin-left: 3%;
-    }
-    .destaques{
-        height: 60vh;
-    }
-    .destaques{
-        padding-left: 5%;
-    }
-    .cardapio{
-        margin-top: -5%;
-    }
-    .whatsapp{
+    #hamb{
         width: 15%;
     }
-    .whatsapp h5{
-        font-size: 16pt;
-    }
-    #titulo{
-        width: 80%;
-        margin-left: 13%;
-    }
- }
- @media (max-width: 740px){
-    .whatsapp h5{
-        font-size: 14pt;
-    }
- }
-@media (max-width: 670px){
-    .destaques{
-        height: 50vh;
-    }
-    .cardapio{
-        margin-top: -15%;
-    }
-    .destaques{
-        padding-left: 15%;
-    }
- }
-
- @media (max-width: 610px){
-    .destaques{
-        height: 50vh;
-        padding-left: 15%;
-        -webkit-transform: skew(0deg); /* Chrome, Opera */
-        -ms-transform: skew(0deg); /* IE */
-        transform: skew(0deg); /* Padrão */
-        padding-left: 0;
-    }
-    .cardapio{
-        margin-top: -15%;
-    }
     .destaque{
-        width: 30%;
-        margin-left: 3%;
-        -webkit-transform: skew(0deg); /* Chrome, Opera */
-        -ms-transform: skew(0deg); /* IE */
-        transform: skew(0deg); /* Padrão */
+        width: 70%;
     }
-    .whatsapp{
+    .destaque1{
+        width: 30%;
+    }
+    .whats{
+        width: 15%;
+    }
+    
+}
+@media (max-width: 790px){
+    #titulo{
+        width: 30%;
+    }
+    #hamb{
         width: 20%;
     }
-    .whatsapp h5{
-        font-size: 12pt;
-    }
-    #titulo{
+    .destaque{
         width: 100%;
-        margin-left: 3%;
     }
- }
+    .destaques{
+        height: auto;
+    }
+    .destaque1{
+        width: 100%;
+    }
+    .whats{
+        width: 20%;
+    }
+    .link-cardapio{
+        display: none;
+    }
+    .content{
+        display: block;
+    }
+}
 
- @media (max-width: 541px){
-    .destaques{
-        height: 40vh;
-    }
-    .cardapio{
-        margin-top: -20%;
-    }
- }
- @media (max-width: 507px){
-    .destaques{
-        height: 40vh;
-    }
-    .cardapio{
-        margin-top: -25%;
-    }
- }
- @media (max-width: 457px){
-    .destaques{
-        height: 30vh;
-    }
-    .cardapio{
-        margin-top: -40%;
-    }
-    .whatsapp{
-        width: 25%;
-    }
+@media (max-width: 823px) and (orientation: landscape){
     #titulo{
-        width: 120%;
-        margin-left: -10%;
+        width: 20%;
     }
- }
-
- @media (max-width: 414px){
+    #hamb{
+        width: 10%;
+    }
+    .destaque{
+        width: 100%;
+        height: 70vh;
+        border-radius: 0;
+    }
     .destaques{
-        height: 30vh;
+        height: auto;
     }
-    .cardapio{
-        margin-top: -70%;
+    .destaque1{
+        width: 100%;
+        height: auto;
     }
- }
+    
+}
 
- @media (max-width: 375px){
-    .destaques{
-        height: 30vh;
-    }
-    .cardapio{
-        margin-top: -70%;
-    }
-    .whatsapp h5{
-        font-size: 10pt ;
-    }
+@media (max-width: 590px){
     #titulo{
-        width: 150%;
-        margin-left: -25%;
+        width: 40%;
+        left: 33%;
     }
- }
- @media (max-width: 320px){
+    .head{
+        height: auto;
+    }
+    #hamb{
+        width: 20%;
+    }
+    .destaque{
+        width: 100%;
+    }
     .destaques{
-        height: 30vh;
+        height: auto;
     }
-    .cardapio{
-        margin-top: -70%;
+    .destaque1{
+        width: 100%;
     }
- }
- @media (max-width: 640px) and (orientation:landscape){
-     .cardapio{
-         margin-top: 10%;
-     }
-     .destaques{
-         padding-left: 10%;
-     }
-     .destaque{
-         margin-left: 3%;
-     }
-     .publicidade{
-         height: 50vh;
-     }
- }
+    
+}
 
- @media (max-width: 731px) and (orientation:landscape){
-    .cardapio{
-        margin-top: 15%;
+@media (max-width: 500px){
+    #titulo{
+        width: 40%;
+        left: 33%;
     }
-    .destaques{
-        padding-left: 10%;
+    .head{
+        height: auto;
+    }
+    #hamb{
+        width: 20%;
     }
     .destaque{
-        margin-left: 3%;
+        height: 40vh;
+        border-radius: 0;
+    }
+    .destaques{
+        height: auto;
+    }
+    .destaque1{
+        width: 100%;
+        margin-top: 0;
+        height: auto;
+    }
+    .whats{
+        width: 30%;
+    }
+    .content{
+        display: block;
+    }
+    .content img{
+        margin-top: 2%;
+    }
+    .link-cardapio{
+        display: none;
     }
 }
-@media (max-width: 823px) and (orientation:landscape){
-    .cardapio{
-        margin-top: 8%;
+
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+    /* For ipad portrait layouts only */
+    #titulo{
+        width: 40%;
+        left: 33%;
     }
-    .destaques{
-        padding-left: 18%;
+    .head{
+        height: auto;
     }
-    .destaque{
-        margin-left: 3%;
-    }
-    .publicidade{
-        height: 50vh;
-    }
-}
-@media (max-width: 568px) and (orientation:landscape){
-    .cardapio{
-        margin-top: 15%;
-    }
-    .destaques{
-        padding-left: 0;
+    #hamb{
+        width: 20%;
     }
     .destaque{
-        margin-left: 3%;
-    }
-    .publicidade{
-        height: 60vh;
-    }
-}
-@media (max-width: 667px) and (orientation:landscape){
-    .cardapio{
-        margin-top: 15%;
+        height: 40vh;
+        border-radius: 0;
     }
     .destaques{
-        padding-left: 10%;
+        height: auto;
+    }
+    .destaque1{
+        width: 100%;
+        margin-top: 0;
+        height: auto;
+    }
+  }
+
+  @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation:portrait) {
+    /* For ipad portrait layouts only */
+    #titulo{
+        width: 40%;
+        left: 33%;
+    }
+    .head{
+        height: auto;
+    }
+    #hamb{
+        width: 20%;
     }
     .destaque{
-        margin-left: 3%;
-    }
-}
-@media (max-width: 736px) and (orientation:landscape){
-    .cardapio{
-        margin-top: 15%;
+        width: 80%;
+        height: 35vh;
+        margin-left: 10%;
+        border-radius: 50px;
+        background-repeat: round;
     }
     .destaques{
-        padding-left: 8%;
+        height: auto;
     }
-    .destaque{
-        margin-left: 3%;
+    .destaque1{
+        width: 100%;
+        margin-top: 0;
+        height: auto;
     }
 }

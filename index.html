@@ -7,62 +7,70 @@
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
 </head>
 <body>
-  <div class="main">
-    <div class="publicidade">
+    <div class="head">
+      <img src="./assets/hamburguinho.png" id="hamb">
       <img src="./assets/title.png" id="titulo">
+      <img src="./assets/head.png">
     </div>
-    <div class="destaques negative">
+    <div class="destaques-response">
+      <img src="./assets/promo.gif">
+    </div>
+    <div class="destaques">
       <div class="destaque">
-        <img src="./assets/italianogif.gif">
+
       </div>
-      <div class="destaque">
-        <img src="./assets/tudogostoso.gif">
+      <div class="destaque1">
+        <h1>Hambúrguer Caseiro <br> s2</h1>
       </div>
-      <div class="destaque">
-        <img src="./assets/bbq.gif">
+      <div class="destaque2">
+        <img src="./assets/especial.png">
+      </div>
+      <div class="link-cardapio">
+        <div class="link">
+         
+            <img src="./assets/cardapio/1.png">
+         
+          <p>Abrir Cardápio</p>
+        </div>
+        <div class="cardapio">
+          <img src="./assets/cardapio/1.png">
+          <img src="./assets/cardapio/2.png">
+          <img src="./assets/cardapio/3.png">
+          <img src="./assets/cardapio/4.png">
+          <img src="./assets/cardapio/5.png">
+          <img src="./assets/cardapio/6.png">
+          <img src="./assets/cardapio/7.png">
+        </div>
+       
       </div>
     </div>
-    <div class="whatsapp">
-      <a href="https://api.whatsapp.com/send?phone=5543991910271&text=Boa%20noite%2C%20Kero%20Lanche%20!">
-        <img src="./assets/whats.png">
-        <h5>Chamar no WhatsApp</h5>
-      </a>
-    </div>
-    <div class="cardapio">
+    <div class="content">
       <img src="./assets/cardapio/1.png">
-      <img src="./assets/cardapio/2.png">
-      <img src="./assets/cardapio/3.png">
-      <img src="./assets/cardapio/4.png">
-      <img src="./assets/cardapio/5.png">
-      <img src="./assets/cardapio/6.png">
-      <img src="./assets/cardapio/7.png">
+      <div class="cardapio2">
+        <img src="./assets/cardapio/2.png">
+        <img src="./assets/cardapio/3.png">
+        <img src="./assets/cardapio/4.png">
+        <img src="./assets/cardapio/5.png">
+        <img src="./assets/cardapio/6.png">
+        <img src="./assets/cardapio/7.png">
+      </div>
     </div>
-  </div>
+    <div class="whats">
+      <img src="./assets/whats.png">
+    </div>
 
 <script type="text/javascript">
-  var i = 0;
-  setInterval(function(){
-    if(i == 0){
-      $('.titulo2').css({opacity:'1'});
-      $('.titulo').css({left:'-100%'});
-      i = 1;
-      console.log(i);
-    }
-    else{
-      $('.titulo').css({left:'0'});
-      $('.titulo2').css({opacity:'0'});
-      i = 0;
-      console.log(i);
-    }
-  }, 4000);
-
+  $('.link').click(function(){
+    $('.cardapio').css({height:'50vh'});
+    $('.cardapio').css({overflow:'visible'});
+    $('.link').css({height:'0vh'});
+  });
 </script>
-  
 </body>
 </html>

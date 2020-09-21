@@ -313,12 +313,13 @@
  }
 
  @media (max-width: 414px){
+     .slide{
+         height: 76vh;
+     }
     .destaques{
         height: 30vh;
     }
-    .cardapio{
-        margin-top: -70%;
-    }
+    
  }
 
  @media (max-width: 375px){

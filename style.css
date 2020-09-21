@@ -279,7 +279,11 @@
         margin-left: 3%;
     }
  }
-
+ @media (max-width: 522px){
+    .slide{
+        height: 77vh;
+    }   
+ }
  @media (max-width: 541px){
     .destaques{
         height: 40vh;
@@ -300,9 +304,7 @@
     .destaques{
         height: 30vh;
     }
-    .cardapio{
-        margin-top: -40%;
-    }
+    
     .whatsapp{
         width: 25%;
     }
@@ -323,12 +325,13 @@
  }
 
  @media (max-width: 375px){
+     .slide{
+         height: 60vh;
+     }
     .destaques{
         height: 30vh;
     }
-    .cardapio{
-        margin-top: -70%;
-    }
+    
     .whatsapp h5{
         font-size: 10pt ;
     }
@@ -337,13 +340,19 @@
         margin-left: 0;
     }
  }
+ @media (max-width: 360px){
+     .slide{
+         height: 47vh;
+     }
+ }
  @media (max-width: 320px){
+    .slide{
+        height: 50vh;
+    }
     .destaques{
         height: 30vh;
     }
-    .cardapio{
-        margin-top: -70%;
-    }
+   
  }
  @media (max-width: 640px) and (orientation:landscape){
      .cardapio{

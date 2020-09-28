@@ -31,6 +31,14 @@
     <div class="slide">
       <img src="./assets/slide.gif">
     </div>
+    <div class="propaganda">
+      <div id="_1">
+        <img src="./assets/motovlog.png">
+      </div>
+      <div id="_2">
+        <img src="./assets/anuncie.png">
+      </div>
+    </div>
     <!--<div class="destaques negative">
       <div class="destaque">
         <img src="./assets/italianogif.gif">
@@ -68,7 +76,31 @@
     </div>
   </div>
   
+<script type="text/javascript">
+  var i = 0;
+  setInterval(function(){ 
+    if(i == 0){
+      $("#_2").css({display:'none'});
+      $("#_1").css({display:'block'});
+      i = 1;
+    }
+    else{
+      $("#_1").css({display:'none'});
+      $("#_2").css({display:'block'});
+      i = 0;
+    }
+    
+  }, 4000);
 
+</script>
+<script type="text/javascript">
+  $("#_1").click(function(){
+    window.open("https://www.youtube.com/channel/UCz_4jEZTEEKEWEH9R-RJ2kg");
+  });
 
+  $("#_2").click(function(){
+    window.open("https://api.whatsapp.com/send?phone=5543991719546&text=Ol%C3%A1%2C%20Gostaria%20de%20anunciar%20minha%20marca%20no%20seu%20site.%20");
+  });
+</script>
 </body>
 </html>

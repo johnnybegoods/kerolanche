@@ -1,3 +1,19 @@
+#_2{
+    display: none;
+}
+.propaganda{
+    width: 100%;
+    height: 20vh;
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.propaganda img:hover{cursor: pointer;}
+.propaganda img{
+    width: 35%;
+    margin-left: 32.5%;
+}
 .slide{
     width: 100%;
     height: auto;
@@ -120,7 +136,6 @@
 .cardapio img{
     width: 100%;
     border-radius: 15px;
-    margin-top: 2%;
     float: left;
 }
 .cardapio:hover h5{
@@ -180,6 +195,9 @@
     .publicidade{
         margin-top: -3%;
     }
+    .propaganda img{
+        width: 45%;
+    }
 }
 
 @media (max-width: 860px){
@@ -198,7 +216,10 @@
  }
 
  @media (max-width: 780px){
-    
+    .propaganda img{
+        width: 60%;
+        margin-left: 20%;
+    }
     .destaque{
         width: 30%;
         margin-left: 3%;
@@ -271,8 +292,11 @@
         margin-left: 3%;
     }
  }
- @media (max-width: 522px){
-       
+ @media (max-width: 550px){
+    .propaganda img{
+        width: 80%;
+        margin-left: 10%;
+    } 
  }
  @media (max-width: 541px){
     .destaques{
@@ -330,7 +354,10 @@
     }
  }
  @media (max-width: 360px){
-     
+    .propaganda img{
+        width: 100%;
+        margin-left: 0%;
+    }
  }
  @media (max-width: 320px){
     

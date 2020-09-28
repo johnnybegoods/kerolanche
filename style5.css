@@ -1,4 +1,4 @@
-#_2{
+#_1{
     display: none;
 }
 .propaganda{
@@ -40,7 +40,6 @@
     height: 40vh;
     background-color: rgb(0, 23, 128);
     overflow: hidden;
-    margin-top:-2%;
     float: left;
 }
 .publicidade p{
@@ -192,9 +191,7 @@
    
 }
 @media (max-width: 906px){
-    .publicidade{
-        margin-top: -3%;
-    }
+    
     .propaganda img{
         width: 45%;
     }
@@ -259,9 +256,7 @@
  }
 
  @media (max-width: 700px){
-    .publicidade{
-        margin-top: -4%;
-    }
+    
  }
 
  @media (max-width: 610px){
@@ -287,10 +282,7 @@
     .whatsapp h5{
         font-size: 12pt;
     }
-    #titulo{
-        width: 100%;
-        margin-left: 3%;
-    }
+    
  }
  @media (max-width: 550px){
     .propaganda img{
@@ -308,9 +300,7 @@
     .destaques{
         height: 40vh;
     }
-    .publicidade{
-        margin-top: -5%;
-    }
+    
  }
  @media (max-width: 457px){
     .destaques{
@@ -334,9 +324,7 @@
     
  }
  @media (max-width: 400px){
-     .publicidade{
-         margin-top: -6%;
-     }
+     
  }
 
  @media (max-width: 375px){

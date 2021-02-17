@@ -33,11 +33,14 @@
       <img src="./assets/slide3.gif">
     </div>
     <div class="propaganda">
-      <div id="_1">
+      <div id="_3">
         <img src="./assets/motovlog2.png">
       </div>
-      <div id="_2">
+      <div id="_1">
         <img src="./assets/anuncie.png">
+      </div>
+      <div id="_2">
+        <img src="./assets/VENDEGOL.png">
       </div>
     </div>
     <!--<div class="destaques negative">
@@ -81,30 +84,38 @@
   var i = 0;
   setInterval(function(){ 
     if(i == 0){
+      $("#_3").css({display:'none'});
       $("#_2").css({display:'none'});
       $("#_1").css({display:'block'});
       i = 1;
     }
     else{
-      $("#_1").css({display:'none'});
-      $("#_2").css({display:'block'});
-      i = 0;
+      if(i == 1){
+        $("#_3").css({display:'none'});
+        $("#_1").css({display:'none'});
+        $("#_2").css({display:'block'});
+        i = 2;
+      }
+      else{
+        $("#_1").css({display:'none'});
+        $("#_2").css({display:'none'});
+        $("#_3").css({display:'block'});
+        i = 0;
+      
+      }
     }
-    
-  }, 4000);
+  }, 7000);
 
 </script>
 <script type="text/javascript">
-  $("#_1").click(function(){
+  $("#_3").click(function(){
     window.open("https://www.youtube.com/channel/UCz_4jEZTEEKEWEH9R-RJ2kg");
-    //alert('Outro Link');
   });
 
   $("#_2").click(function(){
-    //$.get( "http://localhost:8080/CardapioService/webresources/Cadastro", function( data ) {
-    //$( ".result" ).html( data );
-    //alert( data );
-  //});
+    window.open("https://api.whatsapp.com/send?phone=5543991719546&text=Ol%C3%A1%2C%20Gostaria%20de%20saber%20mais%20sobre%20o%20gol%20a%20venda%20");
+  });
+  $("#_1").click(function(){
     window.open("https://api.whatsapp.com/send?phone=5543991719546&text=Ol%C3%A1%2C%20Gostaria%20de%20anunciar%20minha%20marca%20no%20seu%20site.%20");
   });
 </script>

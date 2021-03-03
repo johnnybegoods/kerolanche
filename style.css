@@ -1,0 +1,142 @@
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1a3f0e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #520a8d;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+.cabecalho{
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(75, 46, 2);
+}
+.cabecalho img{
+    width: 8%;
+    position: absolute;
+}
+.slide-response{display: none;}
+.slide, .slide-response{
+    width: 100%;
+    height: auto;
+}
+.slide img{
+    width: 100%;
+}
+.social-media{
+    width: 50%;
+    height: 30vh;
+    float: left;
+}
+.social-media img{
+    width: 30%;
+    margin: 7% 35%;
+    border-radius: 20px;
+}
+.share{
+    width: 100%;
+    height: 40vh;
+    background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
+}
+.share h3{
+    font-family: 'Bangers', cursive;
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+}
+.entrega{
+    width: 100%;
+    height: 30vh;
+    background-image: linear-gradient(rgb(219, 133, 20), rgb(201, 183, 28));
+}
+.entrega img{
+    width: 10%;
+    margin: 2% 45%;
+    border-radius: 25px;
+}
+.cardapio-response{display: none;}
+.cardapio, .cardapio-response{
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(rgb(201, 183, 28), rgb(219, 133, 20));
+}
+.cardapio ul, .cardapio-response ul{
+    list-style: none;
+    padding: 0 0;
+}
+.cardapio img, .cardapio-response img{
+    width: 75%;
+    margin-left: 12.5%;
+    border-radius: 20px;
+}
+.whatsapp{
+    width: 10%;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    align-items: center;
+    float: left;
+    border-style: double;
+    border-color:green;
+    transition: all;
+    transition-duration: 1s;
+}
+.whatsapp:hover{
+    /*background-image: url("./assets/botom.gif");*/
+    /*background-repeat: round;*/
+    border-radius: 120px;
+}
+.whatsapp h5{
+    color:white;
+}
+.whatsapp img{
+    width: 100%;
+}
+
+
+@media (max-width: 1024px){
+    .cabecalho img{
+        width: 20%;
+    }
+    .slide{display: none;}
+    .slide-response{
+        display: block;
+    }
+    .slide-response img{
+        width: 100%;
+    }
+    .social-media{
+        height: auto;
+        width: 50%;
+        padding: 5% 5%;
+    }
+    .social-media img{
+        width: 100%;
+        margin: 0% 0%;
+    }
+    .share{height: auto;}
+    .share h3{
+        font-size: 14pt;
+    }
+    .entrega img{
+        width: 50%;
+        margin: 5% 25%;
+    }
+    .cardapio, .cardapio-response{
+        float: left;
+    }
+    .cardapio{display: none;}
+    .cardapio-response{display: block;}
+    .cardapio-response img{width: 100%;margin-left: 0%;}
+    .whatsapp{
+        width: 25%;
+        border-style: none;
+    }
+    .whatsapp h5{
+        font-size: 10pt ;
+    }
+}
+

@@ -57,6 +57,7 @@
     width: 100%;
     height: 30vh;
     background-image: linear-gradient(rgb(219, 133, 20), rgb(201, 183, 28));
+    float: left;
 }
 .entrega img{
     width: 10%;

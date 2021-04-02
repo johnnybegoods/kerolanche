@@ -1,3 +1,9 @@
+.feedback{
+    width: 100%;
+    height: 35vh;
+    top: 5%;
+    background-color: rgb(219, 133, 20);
+}
 ::-webkit-scrollbar {
     width: 5px;
   }
@@ -39,7 +45,7 @@
 }
 .share{
     width: 100%;
-    height: 40vh;
+    height: 45vh;
     background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
 }
 .share h3{

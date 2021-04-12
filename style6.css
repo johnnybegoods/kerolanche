@@ -1,4 +1,5 @@
 body{background-color: black;}
+.fb-comments, .fb_iframe_widget, .fb_iframe_widget_fluid_desktop{background-color: black;}
 .feedback{
     width: 100%;
     height: auto;

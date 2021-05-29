@@ -1,10 +1,20 @@
-body{background-color: black;}
+body{background-color: rgb(230, 200, 103);}
+.lista-cardapio{
+    float: left;
+    width: 100%;
+    
+}
+.lista-cardapio li{
+    background-color:  rgb(219, 133, 20);
+    text-align: center;
+    font-size: 24pt;
+}
 .fb-comments, .fb_iframe_widget, .fb_iframe_widget_fluid_desktop{background-color: black;}
 .feedback{
     width: 100%;
     height: auto;
     top: 5%;
-    background-color: rgb(219, 133, 20);
+    
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -22,6 +32,32 @@ body{background-color: black;}
     width: 100%;
     height: 8vh;
     background-color: rgb(75, 46, 2);
+}
+.destaque{
+    width: 100%;
+    height: 100vh;
+    background-image: url('assets/take1.png');
+    background-repeat: unset;
+}
+.destaque-interno{
+    position: absolute;
+    width: 30%;
+    height: 100vh;
+    background-color: rgb(196, 92, 23);
+    right: 5%;
+    -webkit-transform: skew(-10deg);
+}
+.outro-destaque{
+    width: 30%;
+    height: 100vh;
+    background-color: rgb(196, 92, 23);
+    position: absolute;
+    right: 0;
+}
+h1{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 100pt;
+    color: white;
 }
 .cabecalho img{
     width: 8%;
@@ -48,9 +84,47 @@ body{background-color: black;}
 .share{
     width: 100%;
     height: 45vh;
-    background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
+    
 }
-.share h3{
+.cardapio{
+    width: 100%;
+    height: auto;
+    background-color: rgb(230, 200, 103);
+    float: left;
+    padding: 5% 15%;
+    background-image: url('./assets/fundocardapio.png');
+    background-repeat: repeat;
+    background-size: 50%;
+    overflow: scroll;
+}
+h2{color: rgb(75, 46, 2);background-color: rgb(194, 129, 8);}
+.categoria{
+    width: 100%;
+    height: 20vh;
+    background-color: rgb(75, 46, 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.categoria:hover{
+    background-color: rgb(187, 114, 6);
+    cursor: pointer;
+    border-style: groove;
+}
+.categoria p{
+    font-family: 'Bebas Neue', cursive;
+    color: white;
+    font-size: 30pt;
+}
+.categoria img{
+    width: 10%;
+}
+.list-group-item:hover{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+.share h3, h2{
     font-family: 'Bangers', cursive;
     font-family: 'Bowlby One SC', cursive;
     text-align: center;
@@ -58,7 +132,6 @@ body{background-color: black;}
 .entrega{
     width: 100%;
     height: 30vh;
-    background-image: linear-gradient(rgb(219, 133, 20), rgb(201, 183, 28));
     float: left;
 }
 .entrega img{
@@ -66,21 +139,7 @@ body{background-color: black;}
     margin: 2% 45%;
     border-radius: 25px;
 }
-.cardapio-response{display: none;}
-.cardapio, .cardapio-response{
-    width: 100%;
-    height: auto;
-    background-image: linear-gradient(rgb(201, 183, 28), rgb(219, 133, 20));
-}
-.cardapio ul, .cardapio-response ul{
-    list-style: none;
-    padding: 0 0;
-}
-.cardapio img, .cardapio-response img{
-    width: 75%;
-    margin-left: 12.5%;
-    border-radius: 20px;
-}
+
 .whatsapp{
     width: 10%;
     position: fixed;
@@ -104,23 +163,120 @@ body{background-color: black;}
 .whatsapp img{
     width: 100%;
 }
-
-
+.item{
+    width: 100%;
+    height: auto;
+    background-color: black !important;
+    display: block !important;
+    float: left;
+    transition: all;
+    transition-duration: 1s;
+    padding: 0% 5%;
+    overflow: hidden;
+}
+.imagem-item{
+    border-style: groove;
+    margin-top: 2%;
+}
+.desc-item{
+    border-bottom-style: groove;
+    padding: 2% 2%;
+}
+.calab{width: 40% !important;}
+.bacon{background-color: rgb(253, 76, 76) !important;}
+.carne{background-color: red !important;}
+.ingredientes .calab{width: 30% !important;}
+.imagem-bbq{
+    background-image: url('./assets/bbq.png') !important;
+    background-repeat: round;
+}
+.imagem-italiano{
+    background-image: url('./assets/italiano.png') !important;
+    background-repeat: round;
+}
+.imagem-king{
+    background-image: url('./assets/king.png') !important;
+    background-repeat: round;
+}
+.imagem-mac{
+    background-image: url('./assets/mac.png') !important;
+    background-repeat: round;
+}
+.imagem-megab{
+    background-image: url('./assets/megab.png') !important;
+    background-repeat: round;
+    height: 30vh !important;
+    margin-top: -0.6% !important;
+}
+.imagem-mac{
+    background-image: url('./assets/mac.png') !important;
+    background-repeat: round;
+}
+.item-adicionais img{
+    width: 20%;
+}
+.imagem-espec{
+    background-image: url('./assets/epec.png') !important;
+    background-repeat: round; 
+}
+.fome-media{
+    width: 60% !important;
+}
+.muita-fome{
+    width: 80% !important;
+}
+.dog{width: 30% !important;}
+h4{
+    font-family: 'Monoton', cursive;
+    color: springgreen;
+    float: right;
+    font-size: 20pt;
+}
+.imagem-item{
+    width: 20%;
+    height: 25vh;
+    float: left;
+}
+.desc-item{
+    width: 78%;
+    height: auto;
+    float: left;
+    margin-left: 2%;
+}
+.item-hamburguer, .item-hot-dog, .item-bebidas, .item-adicionais{
+    height: 0;
+}
+h3{
+    color: white;
+}
+.fome, .fit{
+    width: 40%;
+    height: 2vh;
+    background-color: rgb(156, 172, 167);
+}
+.nivel-fome, .ingredientes{
+    float: left;
+    width: 50%;
+}
+.fome p{
+    position: absolute;
+    font-size: 10pt;
+}
+.niveis{
+    width: 100%;
+    height: auto;
+    background-color: lightcoral;
+}
+.fit{
+    background-color: rgb(126, 79, 189);
+    width: 15%;
+}
+p{color: rgb(216, 209, 209);}
 @media (max-width: 1024px){
-    .campanha img{
-        width: 100%;
-        margin-left: 0;
-    }
-    .campanha p{font-size: 24pt;}
+    .nivel-fome, .ingredientes{width: 100%;}
+    .item-adicionais img{width: 40%;}
     .cabecalho img{
         width: 20%;
-    }
-    .slide{display: none;}
-    .slide-response{
-        display: block;
-    }
-    .slide-response img{
-        width: 100%;
     }
     .social-media{
         height: auto;
@@ -139,18 +295,53 @@ body{background-color: black;}
         width: 50%;
         margin: 5% 25%;
     }
-    .cardapio, .cardapio-response{
-        float: left;
-    }
-    .cardapio{display: none;}
-    .cardapio-response{display: block;}
-    .cardapio-response img{width: 100%;margin-left: 0%;}
+    
     .whatsapp{
         width: 25%;
         border-style: none;
     }
     .whatsapp h5{
         font-size: 10pt ;
+    }
+    .destaque{
+        position: relative; 
+        overflow: hidden;
+        background-position: left;
+        background-position-x: 120%;
+        background-repeat: space;
+        background-size: 150%;
+    }
+    .destaque, .destaque-interno, .outro-destaque{
+        height: 70vh;
+    }
+    .destaque-interno, .outro-destaque{
+        width: 30%;
+    }
+    h1{
+        font-size: 40pt;
+        margin-top: 51%;
+    }
+    #nome{
+        margin-left: -30%;
+    }
+    .cardapio{
+        padding: 5% 2%;
+    }
+    .categoria{
+        margin-top: 2%;
+    }
+    .categoria img{
+        width: 20%;
+    }
+    .imagem-item{
+        width: 50%;
+        margin-left: 25%;
+    }
+    .desc-item{
+        width: 100%;
+        margin-top: 2%;
+        border-bottom-style: none;
+        border-top-style: groove;
     }
 }
 

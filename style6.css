@@ -52,6 +52,7 @@
 .share{
     width: 100%;
     height: 45vh;
+    font-size: 12pt;
 }
 .share h3, h4, h5{
     font-family: 'Bangers', cursive;

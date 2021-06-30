@@ -1,4 +1,8 @@
-body{background-color: black;}
+.container-k{
+    background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
+    
+}
+
 .fb-comments, .fb_iframe_widget, .fb_iframe_widget_fluid_desktop{background-color: black;}
 .feedback{
     width: 100%;
@@ -41,30 +45,51 @@ body{background-color: black;}
     float: left;
 }
 .social-media img{
-    width: 30%;
-    margin: 7% 35%;
+    width: 30% !important;
+    margin: 7% 35% !important;
     border-radius: 20px;
 }
 .share{
     width: 100%;
     height: 45vh;
-    background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
 }
-.share h3{
+.share h3, h4, h5{
     font-family: 'Bangers', cursive;
     font-family: 'Bowlby One SC', cursive;
     text-align: center;
 }
-.entrega{
-    width: 100%;
-    height: 30vh;
-    background-image: linear-gradient(rgb(219, 133, 20), rgb(201, 183, 28));
-    float: left;
+h4{
+    font-size: 40pt;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
-.entrega img{
-    width: 10%;
-    margin: 2% 45%;
-    border-radius: 25px;
+h5{
+    background-color: rgb(196, 132, 48);
+    font-size: 25pt;
+    margin-bottom: 3%;
+}
+h6{
+    font-family: 'Bangers', cursive;
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+    font-size: 25pt;
+    color: rgb(236, 238, 120);
+    background-color: rgb(63, 218, 184);
+    margin-top: 1%;
+}
+
+h7{
+    font-family: 'Bangers', cursive;
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+    font-size: 20pt;
+    color:rgb(75, 46, 2);
+}
+
+    
+.container-k img{
+    width:  10%;
+    margin: 5% 45%
 }
 .cardapio-response{display: none;}
 .cardapio, .cardapio-response{
@@ -92,17 +117,114 @@ body{background-color: black;}
     border-color:green;
     transition: all;
     transition-duration: 1s;
+    
 }
 .whatsapp:hover{
     /*background-image: url("./assets/botom.gif");*/
     /*background-repeat: round;*/
     border-radius: 120px;
+
 }
-.whatsapp h5{
-    color:white;
+.whatsapp a{
+    text-decoration: none;
+}
+.whatsapp h6{
+    color:black;
+    text-decoration: none;
 }
 .whatsapp img{
     width: 100%;
+}
+
+.menu-lista{
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    border-radius: 20px;
+    padding: 5% 2%;
+    overflow: scroll;
+}
+
+
+.col-4{
+    font-weight: bold;
+    color: darkblue;
+}
+.menu-lista ul{
+    overflow: hidden;
+}
+.menu-lista ul li{
+    font-size: 30pt;
+    list-style: none;
+    border-bottom-style: groove; 
+    
+}
+label{font-size: 14pt;font-weight: bold;}
+.niveis{
+    padding: 1% 1%;
+}
+.nivel{
+    width: 25%;
+    height: 2.5vh;
+    border-style: groove;
+    padding: 0px 0px !important;
+}
+.nome{
+    font-weight: bold;
+}
+.fome-min, .fome-med, .fome-gr, .fome-big, .fome-min-min{
+    width: 20%;
+    height: 2vh;
+    background-color: rgb(78, 230, 78);
+    position: relative;
+}
+.fome-med{width: 35% !important;}
+.fome-gr{width: 50% !important;}
+.fome-big{width: 80% !important;}
+.fome-min-min{width: 10%    ;}
+#dogs{
+    background-color: salmon;
+}
+#drinks{
+    background-color: rgb(24, 76, 136);
+    color: white;
+}
+.col-sm-9 img{
+    width: 20% !important;
+}
+.new{
+    position: relative;
+    width: 5% !important;
+}
+.categoria{
+    width: 100%;
+    height: 0vh;
+    overflow: hidden;
+    transition: all;
+    transition-duration: 1s;
+}
+.nome-categoria{
+    width: 100%;
+    height: 10vh;
+    padding: 3% 5%;
+    overflow: hidden;
+    transition: all;
+    transition-duration: 1s;
+}
+
+.nome-categoria:hover{
+    cursor: pointer;
+}
+
+.nome-categoria:hover #label-categoria-hamb{
+    background-color: chartreuse;
+}
+
+.nome-categoria:hover #dogs{
+    background-color: chartreuse;
+}
+.nome-categoria:hover #drinks{
+    background-color: chartreuse;
 }
 
 
@@ -128,29 +250,66 @@ body{background-color: black;}
         padding: 5% 5%;
     }
     .social-media img{
-        width: 100%;
-        margin: 0% 0%;
+        width: 100% !important;
+        margin: 0% 0% !important;
     }
     .share{height: auto;}
     .share h3{
         font-size: 14pt;
     }
-    .entrega img{
-        width: 50%;
-        margin: 5% 25%;
-    }
-    .cardapio, .cardapio-response{
-        float: left;
-    }
-    .cardapio{display: none;}
-    .cardapio-response{display: block;}
+    
+    h4{font-size: 22pt;}
+    
     .cardapio-response img{width: 100%;margin-left: 0%;}
     .whatsapp{
         width: 25%;
         border-style: none;
     }
-    .whatsapp h5{
+    .whatsapp h7{
         font-size: 10pt ;
     }
+    .row{
+        font-size: 14pt;
+    }
+    .col-9{
+        width: 100% !important;
+    }
+    .nome{
+        font-size: 20pt;
+        font-weight: bold;
+    }
+    .container-k img{
+        width: 50%;
+        margin: 5% 25%;
+    }
+    .menu-lista{
+        width: 100%;
+        margin-left: 0;
+        height: 100vh;
+    }
+    
+    .menu-lista ul{
+        padding: 0;
+    }
+    .nivel{
+        height: 2.8vh;
+        width: 70%;
+    }
+    .col-sm-9 img{
+        width: 50% !important;
+    }
+    h6{
+        font-size: 18pt;
+        margin-top: 2%;
+    }
+    .new{
+        position: relative;
+        width: 15% !important;
+        right: -25%;
+    }
+    .hamb ul, .dog ul, .bebidas ul{
+        margin-bottom: 100%;
+    }
+    
 }
 

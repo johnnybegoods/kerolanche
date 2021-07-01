@@ -2,7 +2,9 @@
     background-image: linear-gradient(rgb(57, 217, 245), rgb(219, 133, 20));
     
 }
-
+.k2{
+    height: 100vh;
+}
 .fb-comments, .fb_iframe_widget, .fb_iframe_widget_fluid_desktop{background-color: black;}
 .feedback{
     width: 100%;
@@ -27,9 +29,29 @@
     height: 8vh;
     background-color: rgb(75, 46, 2);
 }
+.navbar{
+    background-color: rgb(75, 46, 2) !important;
+}
 .cabecalho img{
     width: 8%;
     position: absolute;
+    top: 2%;
+}
+.navbar img{
+    width: 8%;
+    position: absolute;
+    top: 2%;
+    left: 0;
+}
+.navbar a{
+    margin-left: 4%;
+    color: wheat !important;
+    font-family: 'Bangers', cursive;
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+}
+.navbar a:hover{
+    color: yellowgreen !important;
 }
 .slide-response{display: none;}
 .slide, .slide-response{
@@ -227,9 +249,19 @@ label{font-size: 14pt;font-weight: bold;}
 .nome-categoria:hover #drinks{
     background-color: chartreuse;
 }
-
+#atend{
+    width: 50%;
+    margin: 2% 25%;
+}
+.menu-response{
+    background-color: white !important;
+    border-color: green;
+}
 
 @media (max-width: 1024px){
+    .navbar img{
+        width: 22%;
+    }
     .campanha img{
         width: 100%;
         margin-left: 0;
@@ -311,6 +343,9 @@ label{font-size: 14pt;font-weight: bold;}
     .hamb ul, .dog ul, .bebidas ul{
         margin-bottom: 100%;
     }
-    
+    #atend{
+        width: 100%;
+        margin: 2% 0%;
+    }
 }
 

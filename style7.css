@@ -264,6 +264,11 @@ label{font-size: 14pt;font-weight: bold;}
 #hora{
     margin-left: 25%;
 }
+#auto-atendimento{
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 20px;
+}
 @media (max-width: 1024px){
     .navbar img{
         width: 22%;
@@ -355,6 +360,10 @@ label{font-size: 14pt;font-weight: bold;}
     }
     #hora{
         margin-left: 2%;
+    }
+    #auto-atendimento{
+        width: 100%;
+        margin-left: 0;
     }
 }
 

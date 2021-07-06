@@ -44,8 +44,14 @@
   <div class="slide">
     <img src="assets/tripledesk.gif">
   </div> 
+  <div class="slide-fechado">
+    <img src="assets/fechadodesk_.png">
+  </div> 
   <div class="slide-response">
     <img src="assets/triplemobile.gif">
+  </div> 
+  <div class="slide-response-fechado">
+    <img src="assets/fechadoresponse_.png">
   </div> 
   <div class="container-k">
     <div class="social-media">
@@ -797,5 +803,33 @@
     });
     
   </script>
+
+  <script>
+
+      let Xmas95 = new Date();
+      let weekday = Xmas95.getDay();
+      if(weekday == 2){
+        if (window.matchMedia("(max-width: 1024px)").matches){
+          $('.slide-response-fechado').css('display', 'block');
+          $('.slide-response').css('display', 'none');
+        }
+        else{
+          $('.slide-fechado').css('display', 'block');
+          $('.slide').css('display', 'none');
+        }
+      }
+      else{
+        if (window.matchMedia("(max-width: 1024px)").matches){
+          $('.slide-response-fechado').css('display', 'none');
+          $('.slide-response').css('display', 'block');
+        }
+        else{
+          $('.slide-fechado').css('display', 'none');
+          $('.slide').css('display', 'block');
+        }
+      }
+
+  </script>
+  
 </body>
 </html>

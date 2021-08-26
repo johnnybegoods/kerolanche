@@ -801,6 +801,40 @@
         drink = 0;
       }
     });
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+        if(Notification.permission !== 'granted'){
+          Notification.requestPermission();
+        }
+    });
+
+    function notifyMe(icon, title, msg, link){
+      if(!Notification){
+        return;
+      }
+
+      if(Notification.permission !== "granted"){
+        Notification.requestPermission();
+      }
+      else{
+        var n = new Notification(title, {
+          icon: icon,
+          body: msg
+        });
+
+        n.onclick = function(){
+          window.open(link);
+        }
+      }
+    }
+
+    var icon  = './assets/logo.png';
+    var title = 'Kero Lanche Notification';
+    var msg = "Notificação do BURG !!";
+    var link = "http://kerolanche.com/atendimento.html";
+
+    notifyMe(icon, title, msg, link);
     
   </script>
 

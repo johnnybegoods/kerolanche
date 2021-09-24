@@ -22,26 +22,11 @@
 <meta Http-Equiv="Cache-Control" Content="no-cache">  
 <meta Http-Equiv="Pragma" Content="no-cache">  
 <meta Http-Equiv="Expires" Content="0">
-<!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '4300175933395047');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=4300175933395047&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Facebook Pixel Code -->
+
+
 </head>
 <body>
-    
+  <audio src="assets/music.wav" controls loop  style="width: 100%;"></audio>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.html"><img src="./assets/hamburguinho.png"></a>
     <button class="navbar-toggler menu-response" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -795,6 +780,20 @@
 
 
   <script type="text/javascript">
+  $(window).on('load', function() {
+    alert('o');
+    var audio = document.querySelector('audio');
+      audio.play();
+
+  });
+/*
+  $(document).ready(function(){
+    var audio = document.querySelector('audio');
+      audio.play;
+  });
+*/
+
+
     var hamb = 0;
     var dog = 0;
     var drink = 0;

@@ -781,7 +781,7 @@
 
   <script type="text/javascript">
   var play = 0;
-  $(document).on('scroll',function() {
+  $(window).click(function() {
     if(play === 0){
       var audio = document.querySelector('audio');
       audio.play();
@@ -789,12 +789,6 @@
     }
 
   });
-/*
-  $(document).ready(function(){
-    var audio = document.querySelector('audio');
-      audio.play;
-  });
-*/
 
 
     var hamb = 0;

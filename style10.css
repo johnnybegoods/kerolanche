@@ -279,15 +279,16 @@ label{font-size: 14pt;font-weight: bold;}
 
 .promo{
     width: 100%;
-    height: 50vh;
+    height: 50vh !important;
     background-image: url('./assets/bfriday.png');
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-size: 100%;
+    padding: 2% 10%;
+    overflow: hidden;
 }
 .promo h1{
     color: rgb(188, 228, 233);
     text-align: center;
-    padding-top: 2%;
     font-family: 'Bowlby One SC', cursive;
     font-size: 50pt;
     
@@ -295,19 +296,25 @@ label{font-size: 14pt;font-weight: bold;}
 .promo h3{
     color: white;
     text-align: center;
-    width: 30%;
-    margin-left: 35%;
+    width: 50%;
+    margin-left: 25%;
     opacity: 0.8;
 }
 .promo h4{
     color: white;
     text-align: center;
-    width: 20%;
-    margin-left: 40%;
+    width: 50%;
+    margin-left: 25%;
     opacity: 0.8;
     font-size: 20pt;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgb(146, 31, 137);
+}
+#burg{
+    width: 40%;
+    margin-top: -7%;
+    float: right;
+    margin-right: -10%;
 }
 
 
@@ -418,9 +425,7 @@ label{font-size: 14pt;font-weight: bold;}
     }
     
     .promo{
-        margin-top: 2%;
-        height: 40vh !important;
-        background-repeat: inherit;
+        height: 30vh !important;
     }
     .promo h1{
         font-size: 25pt;
@@ -430,13 +435,50 @@ label{font-size: 14pt;font-weight: bold;}
         font-size: 10pt;
         width: 80%;
         margin-left: 10%;
-        margin-top: 7%
     }
     .promo h4{
         font-size: 10pt;
         width: 75%;
         margin-left: 12.5%;
-        margin-top: 10%;
+    }
+    #burg{
+        margin-top: -18%;
+        margin-right: -20%;
     }
 }
+
+@media (max-width: 411px){
+    #burg{
+        margin-top: -12% !important; 
+    }
+}
+@media (max-width: 320px){
+    .promo{
+        height: 40vh !important;
+        background-repeat: round;
+    }
+    #burg{
+        margin-top: -12% !important; 
+    }
+}
+@media (max-width: 375px){
+    #burg{
+        margin-top: -17% !important; 
+    }
+    .promo{
+        background-repeat: round;
+    }
+}
+
+@media (max-width: 360px){
+    .promo{
+        height: 35vh !important;
+    }
+}
+@media (max-width: 320px){
+    .promo{
+        height: 40vh !important;
+    }
+}
+
 

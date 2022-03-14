@@ -1,3 +1,8 @@
+#garcon2{
+    width: 10%;
+    margin-left: 45%;
+    margin-top: 0%;
+}
 #garcon{
     width: 20%;
     margin-left: 40%;
@@ -9,11 +14,23 @@
     background-color: rgb(75, 46, 2);
     
 }
-.fechar{
+.fechar, .voltar{
     cursor: pointer;
+    margin-top: 2%;
+}
+.fechar h4, .voltar h4{
+    width: 100%;
+    background-color: #1a3f0e;
+    bottom: 10%;
+    border-style: groove;
+    border-color: black;
+}
+#botao-fechar{
+    bottom: 0;
 }
 .sugestao{
     border-top-style: groove;
+    padding: 2%;
 }
 .linkcardapio{
     background-color: yellowgreen;
@@ -34,16 +51,19 @@
 #box h4{
     font-size: 25pt !important;
     color: yellowgreen;
+    margin-top: 0%;
 }
 #box ul li{
     list-style: none;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 2%;
     background-color: rgb(219, 133, 20);
     text-align: center;
     font-size: 16pt;
     margin-left: 0 !important;
     cursor: pointer;
+    border-style: groove;
+    border-color: black;
 }
 .fome, .lanche, .resultado{
     display: none;
@@ -502,6 +522,15 @@ label{font-size: 14pt;font-weight: bold;}
 }
 
 @media (max-width: 412px){
+    .fechar, .voltar{
+        cursor: pointer;
+        margin-top: 12%;
+    }
+    #garcon2{
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 0;
+    }
     .ajuda{
         overflow: hidden;
     }
@@ -521,7 +550,7 @@ label{font-size: 14pt;font-weight: bold;}
     }
     .menu-sobrepor{
         width: 100%;
-        height: 80vh;
+        height: 75vh;
         background-color: rgb(75, 46, 2);
         position: absolute;
         top: 10%;
@@ -535,7 +564,7 @@ label{font-size: 14pt;font-weight: bold;}
     #box ul li{
         list-style: none;
         width: 100%;
-        margin-top: 25%;
+        margin-top: 15%;
         background-color: rgb(219, 133, 20);
         text-align: center;
         font-size: 16pt;

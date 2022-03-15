@@ -24,6 +24,7 @@
     bottom: 10%;
     border-style: groove;
     border-color: black;
+    border-radius: 15px;
 }
 #botao-fechar{
     bottom: 0;

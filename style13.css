@@ -290,6 +290,10 @@ label{font-size: 14pt;font-weight: bold;}
     background-color: rgb(24, 76, 136);
     color: white;
 }
+#chocolates{
+    background-color: rgb(94, 45, 11);
+    color:white;
+}
 .col-sm-9 img{
     width: 20% !important;
 }
@@ -325,6 +329,9 @@ label{font-size: 14pt;font-weight: bold;}
     background-color: chartreuse;
 }
 .nome-categoria:hover #drinks{
+    background-color: chartreuse;
+}
+.nome-categoria:hover #chocolates{
     background-color: chartreuse;
 }
 #atend{
@@ -475,7 +482,7 @@ label{font-size: 14pt;font-weight: bold;}
         width: 15% !important;
         right: -25%;
     }
-    .hamb ul, .dog ul, .bebidas ul{
+    .hamb ul, .dog ul, .bebidas ul, .sobremesa ul{
         margin-bottom: 100%;
     }
     #atend{

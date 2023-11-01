@@ -294,6 +294,17 @@ label{font-size: 14pt;font-weight: bold;}
     background-color: rgb(94, 45, 11);
     color:white;
 }
+
+#veget{
+    background-color: #61944f;
+    color: #b0eb9b;
+}
+
+#molhos{
+    background-color: #401988;
+    color: #b0eb9b;
+}
+
 .col-sm-9 img{
     width: 20% !important;
 }
@@ -333,6 +344,14 @@ label{font-size: 14pt;font-weight: bold;}
 }
 .nome-categoria:hover #chocolates{
     background-color: chartreuse;
+}
+.nome-categoria:hover #veget{
+    background-color: chartreuse;
+    color: #1b6801;
+}
+.nome-categoria:hover #molhos{
+    background-color: chartreuse;
+    color: #401988;
 }
 #atend{
     width: 50%;

@@ -345,6 +345,40 @@
 
 
     <div class="menu-lista">
+
+
+      <!--------------------------------VEGETARIANO-->
+      <div class="nome-categoria veg_"><h5 id="veget">VEGETARIANO</h5></div>
+      <div class="categoria veg">
+        <ul>
+          <!--**************************-->
+          <li>
+            <div class="row nome">
+              <div class="col-8">HOLY DAY (Sem Carne)
+
+              </div>
+              <div class="col-4">$22</div>
+            </div>
+            <div class="row desc">
+              <div class="col-sm-9"><img src="./assets/menu/hOLY daY.png"></div>
+              <div class="col-sm-9">pão- 2 ovos- mussarela - tomate - picles - cebola roxa- 
+                fatias d cheddar- alface
+              </div>
+            </div>
+            <div class="row niveis">
+              <div class="col-sm-9">
+                <label>FOME</label>
+                <div class="nivel"><div class="fome-med"></div></div>
+              </div>
+             
+            </div>
+          </li>
+          <!--**************************-->
+
+          </ul>
+      </div>
+
+
       
       <!--------------------------------HAMBURGUERS-->
       <div class="nome-categoria hamburguers"><h5 id="label-categoria-hamb">HAMBÙRGUERS</h5></div>
@@ -369,33 +403,6 @@
             </div>
           </li>
           <!--**************************-->
-
-          <!--**************************-->
-          <li>
-            <div class="row nome">
-              <img src="./assets/menu/new.png" class="new">
-              <div class="col-8">HOLY DAY ( Edição Sem Carne)
-
-              </div>
-              <div class="col-4">$22</div>
-            </div>
-            <div class="row desc">
-              <div class="col-sm-9"><img src="./assets/menu/hOLY daY.png"></div>
-              <div class="col-sm-9">pão- 2 ovos- mussarela - tomate - picles - cebola roxa- 
-                fatias d cheddar- alface
-              </div>
-            </div>
-            <div class="row niveis">
-              <div class="col-sm-9">
-                <label>FOME</label>
-                <div class="nivel"><div class="fome-med"></div></div>
-              </div>
-             
-            </div>
-          </li>
-          <!--**************************-->
-
-
 
           <li>
             <div class="row nome">
@@ -1051,6 +1058,16 @@
           
           <li>
             <div class="row nome">
+              <div class="col-8">SKOL LATA 350ML</div>
+              <div class="col-4">$5</div>
+            </div>
+            <div class="row desc">
+              <div class="col-sm-9"><img src="./assets/menu/skollata.png"></div>
+            </div>
+          </li>
+  
+          <li>
+            <div class="row nome">
               <div class="col-8">ANTARCTICA LATA 350ML</div>
               <div class="col-4">$5</div>
             </div>
@@ -1059,17 +1076,18 @@
             </div>
           </li>
   
-          
+          <!--*********************
           <li>
             <div class="row nome">
-              <div class="col-8">BUDWEISER 350ML</div>
+              <div class="col-8">AMSTEL LATA 350ML</div>
               <div class="col-4">$6</div>
             </div>
             <div class="row desc">
-              <div class="col-sm-9"><img src="./assets/menu/bud.jpg"></div>
+              <div class="col-sm-9"><img src="./assets/menu/amtel_).png"></div>
             </div>
           </li>
-         
+          **************************-->
+
           <!--*************************-->
           <li>
             <div class="row nome">
@@ -1235,6 +1253,53 @@
           </ul>
       </div>
 
+      <!--------------------------------MOLHOS ADICIONAIS-->
+      <div class="nome-categoria molhos_"><h5 id="molhos">MOLHOS ADICIONAIS</h5></div>
+      <div class="categoria molhos">
+        <ul>
+          <!--*******************************-->
+          <li>
+            <div class="row nome">
+              <div class="col-8">MOLHO VERDE (8 SACHÊS)</div>
+              <div class="col-4">$2</div>
+            </div>
+            <div class="row desc">
+              <div class="col-sm-9"><img src="./assets/menu/molhoverde.png"></div>
+            </div>
+          </li>
+          <!--**************************-->
+
+           <!--*******************************-->
+           <li>
+            <div class="row nome">
+              <div class="col-8">BARBECUE (8 SACHÊS)</div>
+              <div class="col-4">$2</div>
+            </div>
+            <div class="row desc">
+              <div class="col-sm-9"><img src="./assets/menu/barbecue.png"></div>
+            </div>
+          </li>
+          <!--**************************-->
+
+           
+
+          <!--*******************************-->
+          <li>
+            <div class="row nome">
+              <div class="col-8">MOSTARDA (8 SACHÊS)</div>
+              <div class="col-4">$2</div>
+            </div>
+            <div class="row desc">
+              <div class="col-sm-9"><img src="./assets/menu/mostarda.png"></div>
+            </div>
+          </li>
+          <!--**************************-->
+
+          </ul>
+      </div>
+
+      
+
 
       <h4>ADICIONAIS +++ </h4>
       <ul style="text-align: center;">
@@ -1282,6 +1347,8 @@
     var dog = 0;
     var drink = 0;
     var sob = 0;
+    var mol = 0;
+    var vegtariano = 0;
     
     $('.hamburguers').click(function(){
         window.location = "#label-categoria-hamb";
@@ -1294,9 +1361,16 @@
         $('.sobremesa').css('height', '0vh');
         $('.sobremesa').css('overflow', 'hidden');
 
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+
       dog = 0;
       drink = 0;
       sob = 0;
+      mol = 0;
       if(hamb == 0){
         $('.hamb').css('height', '100vh');
         $('.hamb').css('overflow', 'scroll');
@@ -1321,10 +1395,17 @@
         $('.sobremesa').css('height', '0vh');
         $('.sobremesa').css('overflow', 'hidden');
 
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+
 
       hamb = 0;
       drink = 0;
       sob = 0;
+      mol = 0;
       if(dog == 0){
         $('.dog').css('height', '100vh');
         $('.dog').css('overflow', 'scroll');
@@ -1348,10 +1429,17 @@
         $('.sobremesa').css('height', '0vh');
         $('.sobremesa').css('overflow', 'hidden');
 
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+
 
       hamb = 0;
       dog = 0;
       sob = 0;
+      mol = 0;
       if(drink == 0){
         $('.bebidas').css('height', '100vh');
         $('.bebidas').css('overflow', 'scroll');
@@ -1375,10 +1463,17 @@
         $('.bebidas').css('height', '0vh');
         $('.bebidas').css('overflow', 'hidden');
 
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+
 
       hamb = 0;
       dog = 0;
       drink = 0;
+
+      mol = 0;
       if(sob == 0){
         $('.sobremesa').css('height', '100vh');
         $('.sobremesa').css('overflow', 'scroll');
@@ -1388,6 +1483,68 @@
         $('.sobremesa').css('height', '0vh');
         $('.sobremesa').css('overflow', 'hidden');
         sob = 0;
+      }
+    });
+
+    $('.molhos_').click(function(){
+      window.location = "#molhos";
+      $('.hamb').css('height', '0vh');
+        $('.hamb').css('overflow', 'hidden');
+        $('.dog').css('height', '0vh');
+        $('.dog').css('overflow', 'hidden');
+        $('.bebidas').css('height', '0vh');
+        $('.bebidas').css('overflow', 'hidden');
+        $('.sobremesa').css('height', '0vh');
+        $('.sobremesa').css('overflow', 'hidden');
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+
+
+      hamb = 0;
+      dog = 0;
+      drink = 0;
+      sob = 0;
+      if(mol == 0){
+        $('.molhos').css('height', '100vh');
+        $('.molhos').css('overflow', 'scroll');
+        mol = 1;
+      }
+      else{
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+        mol = 0;
+      }
+    });
+
+
+    $('.veg_').click(function(){
+      window.location = "#veget";
+      $('.hamb').css('height', '0vh');
+        $('.hamb').css('overflow', 'hidden');
+        $('.dog').css('height', '0vh');
+        $('.dog').css('overflow', 'hidden');
+        $('.bebidas').css('height', '0vh');
+        $('.bebidas').css('overflow', 'hidden');
+        $('.sobremesa').css('height', '0vh');
+        $('.sobremesa').css('overflow', 'hidden');
+        $('.molhos').css('height', '0vh');
+        $('.molhos').css('overflow', 'hidden');
+
+
+      hamb = 0;
+      dog = 0;
+      drink = 0;
+      sob = 0;
+      mol = 0;
+      if(vegtariano == 0){
+        $('.veg').css('height', '100vh');
+        $('.veg').css('overflow', 'scroll');
+        vegtariano = 1;
+      }
+      else{
+        $('.veg').css('height', '0vh');
+        $('.veg').css('overflow', 'hidden');
+        vegtariano = 0;
       }
     });
 

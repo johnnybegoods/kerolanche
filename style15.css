@@ -1,3 +1,4 @@
+
 .cardapio-lanches{
     
     
@@ -556,7 +557,8 @@ label{font-size: 14pt;font-weight: bold;}
     }
 }
 
-@media (max-width: 412px){
+@media (max-width: 500px){
+   
     .fechar, .voltar{
         cursor: pointer;
         margin-top: 12%;

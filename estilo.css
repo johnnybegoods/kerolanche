@@ -66,9 +66,7 @@ body{font-family: 'Bowlby One SC', cursive !important;}
 }
 
 .carousel-caption a:hover{background-color: #a6d696;}
-.active{
-    background-color: black !important;
-}
+
 .carousel-indicators{margin-bottom: -10%;background-color: #ddd7d0;border-radius: 15px;}
 
 

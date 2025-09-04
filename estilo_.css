@@ -5,7 +5,56 @@ body{font-family: 'Bowlby One SC', cursive !important;}
 #############     MENU SUSPENSO CABEÇALHO DA PAGINA    #################
 
 
+
+
 */
+
+/*  conteúdo patrocinado */
+
+.promo-slide {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 315px;   /* ✅ adicionado */
+  overflow: hidden;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.promo-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: slide 12s infinite;
+}
+
+.slide-track img {
+  width: 50%;
+  height: 100%;    /* ✅ adicionado */
+  object-fit: cover; /* ✅ garante que a imagem preencha o frame */
+  flex-shrink: 0;
+}   
+
+/* Animação automática */
+@keyframes slide {
+  0%, 30%   { transform: translateX(0); }
+  33%, 63%  { transform: translateX(-100%); }
+  66%, 96%  { transform: translateX(-50%); }
+  100%      { transform: translateX(0); }
+}
+
+
+/* fim conteudo patrocinado */
+
+
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -75,6 +124,7 @@ body{font-family: 'Bowlby One SC', cursive !important;}
     height: 600px;
     background-color: rgb(218, 29, 29);
     overflow: hidden;
+    margin-top: 3%;
 }
 .app h2{color: white;margin: 5% 50%;width: 30%;font-size: 60px;}
 .app img{width: 50%;margin-top: -25%;}
@@ -227,6 +277,16 @@ body{font-family: 'Bowlby One SC', cursive !important;}
     .whatsapp h5{
         font-size: 15px;
     }
+
+.slide-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: slide 12s infinite;
+}
+
+
+
 
 
 }

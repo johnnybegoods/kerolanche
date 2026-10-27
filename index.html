@@ -1,93 +1,322 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Cardapiokerolanche</title>
-  <meta property="og:url" content="http://kerolanche.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Kero Lanche Delivery - Sertanópolis" />
-  <meta property="og:description" content="Cardápio Online" />
-  <meta property="og:image" itemprop="image" content="http://kerolanche.com/assets/capa-cardapio.png"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./style6.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script type ="text/javascript" src ="https://platform-api.sharethis.com/js/sharethis.js#property=5f5909474cd0400012608242&product=inline-share-buttons" async="async"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One+SC&display=swap" rel="stylesheet">
-<meta Http-Equiv="Cache-Control" Content="no-cache">  
-<meta Http-Equiv="Pragma" Content="no-cache">  
-<meta Http-Equiv="Expires" Content="0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kero Delivery | Deu fome? Deu Kero.</title>
+<meta name="description" content="Lanches e pizzas em Sertanópolis. Conheça os destaques do Kero Delivery e abra o cardápio para escolher seu próximo pedido.">
+<meta name="theme-color" content="#f7b900">
+<link rel="icon" href="assets/hamburguinho_transparente.png">
+<style>
+:root{--yellow:#ffca05;--cream:#fff8e9;--ink:#242019;--red:#bc2b20;--line:#ded6c5}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #16764c;outline-offset:5px}
+.wrap{min-width:0;max-width:1240px;margin:auto;padding:0 38px}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}header{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line)}
+.nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:54px;height:54px;object-fit:contain}
+.brand b{font-size:34px;letter-spacing:-2px;line-height:1}
+.brand small{display:block;font-size:9px;letter-spacing:4px;font-weight:900}
+.links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:15px 24px;border-radius:8px;background:var(--ink);color:white;font-weight:800;border:2px solid var(--ink);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-3px);background:#443a2c}
+.btn.yellow{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.btn.outline{background:transparent;color:var(--ink)}
+.hero{background:var(--yellow);overflow:hidden}
+.hero-inner{min-height:630px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding-top:38px;padding-bottom:42px}
+.hero h1{font-size:clamp(64px,7.2vw,105px);line-height:.91;letter-spacing:-6px;font-weight:1000;margin:24px 0}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero p{max-width:410px;font-size:18px;margin:25px 0}
+.hero-photo{position:relative;min-width:0}
+.hero-photo img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:50% 50% 12% 50%;transform:rotate(-5deg);box-shadow:18px 24px 0 #e4a800}
+.stamp{position:absolute;right:-12px;top:8px;background:var(--cream);border:2px solid var(--ink);border-radius:50%;width:117px;height:117px;display:grid;place-content:center;text-align:center;font-size:20px;font-weight:1000;line-height:1.05;transform:rotate(12deg)}
+.hero-note{font-size:11px;letter-spacing:1.2px;font-weight:800;margin-top:24px}
+.ticker{background:var(--ink);color:var(--yellow);padding:17px;text-align:center;font-size:13px;letter-spacing:2.5px;font-weight:900}
+.ticker span{padding:0 28px}
+.section{padding-top:82px;padding-bottom:82px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px}h2{font-size:clamp(35px,4.2vw,60px);font-weight:1000;letter-spacing:-2.5px;line-height:1.05;margin:12px 0}p{margin:12px 0}
+.text-link{font-size:14px;font-weight:800;border-bottom:2px solid var(--ink);padding-bottom:6px;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fffcf4;display:flex;flex-direction:column}
+.product-photo{height:auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#f5e9d1;position:relative;padding:0}
+.product-photo img{height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 14px 9px #47301830);transition:transform .3s}
+.card:hover img{transform:scale(1.06) rotate(-3deg)}
+.tag{z-index:1;position:absolute;top:16px;left:16px;font-size:10px;letter-spacing:1px;font-weight:900;background:var(--yellow);border-radius:4px;padding:5px 10px}
+.card-body{padding:25px;flex:1;display:flex;flex-direction:column;align-items:start}
+.card h3{overflow-wrap:break-word;font-size:27px;letter-spacing:-1px;margin:0}
+.card p{font-size:14px;color:#655a49;margin-bottom:25px}
+.card .text-link{margin-top:auto}
+.pizza{background:var(--red);color:var(--cream);overflow:hidden}
+.pizza-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding-top:66px;padding-bottom:66px}
+.pizza-art{width:100%;max-width:510px;aspect-ratio:1;height:auto;justify-self:center;transform:none;border-radius:20px;overflow:hidden;background:var(--yellow)}
+.pizza-art img{display:block;position:static;width:100%;height:auto;max-width:100%;object-fit:contain}
+.pizza-art:after{display:none}
+.pizza h2{font-size:clamp(44px,5.4vw,74px)}
+.pizza p{max-width:390px;margin:24px 0}
+.choice{background:#f1e7d2;border:1px solid var(--line);border-radius:20px;padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.choice h2{font-size:42px}
+.choice-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.choice button{background:var(--cream);border:2px solid var(--ink);padding:14px 20px;font-weight:800;border-radius:100px}
+.choice button[aria-pressed=true]{background:var(--ink);color:var(--yellow)}#choice-result{min-height:60px;font-size:14px;margin-top:18px}#choice-result a{font-weight:900;text-decoration:underline}
+.social{padding-top:0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.social-box{border-radius:18px;padding:38px;background:var(--yellow)}
+.social-box.dark{background:var(--ink);color:var(--cream)}
+.social h2{font-size:38px}
+.social p{max-width:380px;margin:20px 0 26px}
+.social-box.dark .text-link{border-color:var(--cream)}footer{border-top:1px solid var(--line);padding:36px 0 105px}
+.footer-top{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.footer-top p{font-size:13px;color:#655a49}
+.footnote{border-top:1px solid var(--line);margin-top:26px;padding-top:18px;font-size:11px;display:flex;justify-content:space-between;gap:20px}
+.mobile-order{display:none}
+.skip{position:absolute;top:-100px}
+.skip:focus{top:8px;left:8px;z-index:99;background:white;padding:12px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+@media(min-width:1000px){.pizza-art img{display:block;position:static;width:100%;height:auto;max-width:100%;object-fit:contain}
+.pizza-art{width:100%;max-width:510px;aspect-ratio:1;height:auto;justify-self:center;transform:none;border-radius:20px;overflow:hidden;background:var(--yellow)}}
+@media(max-width:800px){.wrap{padding-left:22px;padding-right:22px}
+.nav{height:76px}
+.brand b{font-size:29px}
+.brand img{width:44px;height:44px}
+.links>a:not(.btn){display:none}
+.links .btn{padding:10px 15px;font-size:12px}
+.hero-inner{grid-template-columns:1fr;gap:30px;padding-top:35px;padding-bottom:44px}
+.hero h1{letter-spacing:-3px;font-size:clamp(48px,12vw,75px)}
+.hero p{font-size:16px}
+.hero-photo{max-width:430px;width:90%;justify-self:center;margin-bottom:8px}
+.stamp{width:90px;height:90px;font-size:16px;right:-14px}
+.hero-note{font-size:10px}
+.ticker{font-size:10px;letter-spacing:1px}
+.ticker span{padding:0 7px}
+.section{padding-top:55px;padding-bottom:55px}
+.section-head{align-items:start;flex-direction:column;gap:12px}
+.cards{grid-template-columns:1fr}
+.product-photo{height:auto;aspect-ratio:1}
+.card-body{padding:24px}
+.pizza-inner{grid-template-columns:1fr;gap:32px;padding-top:45px;padding-bottom:45px}
+.pizza-art{width:100%;max-width:510px;aspect-ratio:1;height:auto;justify-self:center;transform:none;border-radius:20px;overflow:hidden;background:var(--yellow)}
+.pizza-art img{display:block;position:static;width:100%;height:auto;max-width:100%;object-fit:contain}
+.pizza-art:after{display:none}
+.choice{padding:26px;grid-template-columns:1fr;gap:18px}
+.choice h2{font-size:36px}
+.social{grid-template-columns:1fr;padding-top:0}
+.social-box{padding:28px}
+.social h2{font-size:35px}
+.footer-top{align-items:start;flex-direction:column}
+.footnote{flex-direction:column;gap:5px}
+.mobile-order{position:fixed;bottom:0;left:0;right:0;padding:12px 18px max(12px,env(safe-area-inset-bottom));display:flex;gap:10px;background:var(--cream);border-top:1px solid var(--line);z-index:20}
+.mobile-order .btn{flex:1;font-size:13px;padding:12px 8px}
+.mobile-order .outline{flex:0.65}footer{padding-bottom:120px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*{transition:none!important}}
+</style>
 </head>
 <body>
-  <div class="cabecalho">
-    <img src="assets/hamburguinho.png">
-  </div> 
-  
-  <div class="slide">
-    <img src="assets/tripledesk.gif">
-  </div> 
-  <div class="slide-response">
-    <img src="assets/triplemobile.gif">
-  </div> 
-  <div class="social-media">
-    <a href="https://www.facebook.com/KeroLancheSertanopolis"><img src="assets/facebook.png"></a>
-  </div>
-  <div class="social-media">
-    <a href="https://www.instagram.com/kerolanchesertanopolis/"><img src="assets/instagram.png"></a>
-  </div>
-  <div class="share">
-    <h3>Compartilhe Nosso Burg</h3>
-    <div class="sharethis-inline-share-buttons"></div>
-  </div>
-  <div class="feedback">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header>
+<nav class="nav wrap" aria-label="Navegação principal">
+<a href="#" class="brand" aria-label="Kero Delivery início">
+<!-- FOTO: substitua assets/hamburguinho_transparente.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/hamburguinho_transparente.png" alt="Burguinho, mascote Kero">
+<div>
+<b>KERO</b>
+<small>DELIVERY</small>
+</div>
+</a>
+<div class="links">
+<a href="#destaques">Deu vontade</a>
+<a href="#pizzas">Time pizza</a>
+<a href="#conecte">Fala, Kero!</a>
+<a class="btn" href="https://kerolanchesertanopolis.menudino.com">Abrir APP <span aria-hidden="true">↗</span>
+</a>
+</div>
+</nav>
+</header>
+<main id="conteudo">
+<section class="hero">
+<div class="wrap hero-inner">
+<div>
+<div class="eyebrow">Lanches + pizzas • Sertanópolis / PR</div>
+<h1>DEU FOME?<br>DEU <em>KERO.</em>
+</h1>
+<p>Aquela mordida que muda a sua noite.<br>Escolha seu favorito. O resto é com a gente.</p>
+<div class="hero-actions">
+<a class="btn" href="https://kerolanchesertanopolis.menudino.com">Bora pedir <span aria-hidden="true">↗</span>
+</a>
+<a class="btn outline" href="#destaques">Quero conhecer</a>
+</div>
+<div class="hero-note">FEITO PARA DAR VONTADE. ENTREGUE NA SUA PORTA.</div>
+</div>
+<div class="hero-photo">
+<!-- FOTO: substitua assets/menu/monstro.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/menu/monstro.png" alt="Big Monstro do Kero, com hambúrgueres, queijo, bacon e salada" fetchpriority="high">
+<div class="stamp">RESPEITA<br>ESSA<br>MORDIDA.</div>
+</div>
+</div>
+</section>
+<div class="ticker" aria-label="Lanches, pizzas e muito sabor">LANCHE CAPRICHADO <span aria-hidden="true">✳</span> PIZZA NA MESA <span aria-hidden="true">✳</span> HOJE TEM KERO</div>
+<section class="section wrap" id="destaques">
+<div class="section-head">
+<div>
+<div class="eyebrow">Seu próximo “eu kero”</div>
+<h2>Difícil é escolher um só.</h2>
+</div>
+<a class="text-link" href="https://kerolanchesertanopolis.menudino.com">Explorar o cardápio ↗</a>
+</div>
+<div class="cards">
+<article class="card">
+<div class="product-photo">
+<span class="tag">QUE MOR-DI-DA!</span>
+<!-- FOTO: substitua assets/menu/fakemac.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/menu/fakemac.png" alt="Lanche Fake Mac" loading="lazy">
+</div>
+<div class="card-body">
+<h3>Fake Mac</h3>
+<p>Nome de respeito. Vontade de repetir. O próximo favorito da sua noite?</p>
+<a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=FAKE+MAC&item=c698f5d6-3e7d-4e31-ab72-ce69d44f3774">Eu kero esse ↗</a>
+</div>
+</article>
+<article class="card">
+<div class="product-photo" style="background:#ffdf78">
+<span class="tag">TIME CHEDDAR</span>
+<!-- FOTO: substitua assets/menu/duplocheddar.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/menu/duplocheddar.png" alt="Duplo Cheddar" loading="lazy">
+</div>
+<div class="card-body">
+<h3>Duplo Cheddar</h3>
+<p>Uma camada de vontade já seria pouco. Esse é para quem ama cheddar.</p>
+<a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=DUPLO+CHEDDAR&item=9f3dfe12-7ba6-4447-9a34-ba4c2b2aefd1">Ver no App ↗</a>
+</div>
+</article>
+<article class="card">
+<div class="product-photo" style="background:#ead7bc">
+<span class="tag">APETITE DE RESPEITO</span>
+<!-- FOTO: substitua assets/menu/cremosao.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/menu/cremosao.png" alt="Lanche Cremosão" loading="lazy">
+</div>
+<div class="card-body">
+<h3>Cremosão</h3>
+<p>O nome já entrega o clima. Agora só falta entregar na sua casa.</p>
+<a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=CREMOS%C3%83O&item=5d252506-786b-4884-9cfb-0aa4a36d8357">Deu vontade ↗</a>
+</div>
+</article>
+</div>
+</section>
+<section class="pizza" id="pizzas">
+<div class="wrap pizza-inner">
+<div class="pizza-art" role="img" aria-label="Pizza de costela barbecue do Kero Delivery">
+<!-- FOTO: substitua assets/destaque2.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/destaque2.png" alt="Pizza de costela barbecue" loading="lazy">
+</div>
+<div>
+<div class="eyebrow">A noite pede uma redonda</div>
+<h2>O último pedaço<br>vai dar disputa.</h2>
+<p>Reúne a turma, escolhe os sabores e deixa a pizza com o Kero. Da primeira fatia ao “sobrou mais?”.</p>
+<a class="btn yellow" href="https://kerolanchesertanopolis.menudino.com">Hoje eu kero pizza ↗</a>
+</div>
+</div>
+</section>
 
+<!-- DESTAQUES DE PIZZA: substitua as fotos em assets mantendo os nomes. -->
+<section class="section wrap" id="destaques-pizza" aria-labelledby="titulo-pizzas">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Três sabores. Muita vontade.</div>
+      <h2 id="titulo-pizzas">Sua próxima fatia favorita.</h2>
+    </div>
+    <a class="text-link" href="https://kerolanchesertanopolis.menudino.com">Ver todas as pizzas ↗</a>
   </div>
-  <div class="entrega">
-    <img src="assets/entrega grátis.png">
+  <div class="cards">
+    <article class="card">
+      <div class="product-photo">
+        <span class="tag">SABOR DE RESPEITO</span>
+        <img src="assets/destaquepizza1.png" alt="Pizza Carreteiro" loading="lazy" width="1254" height="1254">
+      </div>
+      <div class="card-body">
+        <h3>Carreteiro</h3>
+        <p>Cobertura caprichada e uma combinação que pede mais uma fatia.</p>
+        <a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=Pizza+CARRETEIRO&item=24428c6e-2990-4c88-9f52-2a482e29fe00" aria-label="Eu kero essa: pizza Carreteiro">Eu kero essa ↗</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="product-photo">
+        <span class="tag">COMBINAÇÃO QUE CONQUISTA</span>
+        <img src="assets/destaquepizza2.png" alt="Pizza Alcatra com pasta de alho" loading="lazy" width="1254" height="1254">
+      </div>
+      <div class="card-body">
+        <h3>Alcatra com pasta de alho</h3>
+        <p>Alcatra e pasta de alho: a dupla que transforma a noite em um bom pedido.</p>
+        <a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=Pizza+ALCATRA+C%2F+PASTA+DE+ALHO&item=e7adab47-12fc-4574-a0cf-e69e1c86f7ce" aria-label="Deu vontade: pizza Alcatra com pasta de alho">Deu vontade ↗</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="product-photo">
+        <span class="tag">UMA FATIA DIFERENTE</span>
+        <img src="assets/destaquepizza3.png" alt="Pizza Carne seca com pimenta biquinho" loading="lazy" width="1254" height="1254">
+      </div>
+      <div class="card-body">
+        <h3>Carne seca com pimenta biquinho</h3>
+        <p>Carne seca e pimenta biquinho em uma combinação para sair do de sempre.</p>
+        <a class="text-link" href="https://kerolanchesertanopolis.menudino.com/?produto=Pizza+CARNE+SECA+COM+PIMENTA+BIQUINHO&item=181b5ba2-3406-478a-b3e6-895b1a0692ec" aria-label="Ver no App: pizza Carne seca com pimenta biquinho">Ver no cardápio ↗</a>
+      </div>
+    </article>
   </div>
-  <div class="cardapio">
-    <ul>
-      <li><img src="assets/cardapio21/1x.png"></li>
-      <li><img src="assets/cardapio21/2x.png"></li>
-      <li><img src="assets/cardapio21/3x.png"></li>
-      <li><img src="assets/cardapio21/4x.png"></li>
-      <li><img src="assets/cardapio21/5x.png"></li>
-      <li><img src="assets/cardapio21/6x.png"></li>
-      <li><img src="assets/cardapio21/7x.png"></li>
-      <li><img src="assets/cardapio21/8x.png"></li>
-      <li><img src="assets/cardapio21/9x.png"></li>
-      <li><img src="assets/cardapio21/10x.png"></li>
-      <li><img src="assets/cardapio21/11x.png"></li>
-    </ul>
-  </div>
-  <div class="cardapio-response">
-    <ul>
-      <li><img src="assets/cardapio21-response/1x.png"></li>
-      <li><img src="assets/cardapio21-response/2x.png"></li>
-      <li><img src="assets/cardapio21-response/3x.png"></li>
-      <li><img src="assets/cardapio21-response/4x.png"></li>
-      <li><img src="assets/cardapio21-response/5x.png"></li>
-      <li><img src="assets/cardapio21-response/6x.png"></li>
-      <li><img src="assets/cardapio21-response/7x.png"></li>
-      <li><img src="assets/cardapio21-response/8x.png"></li>
-    </ul>
-  </div>
-  <div class="whatsapp">
-    <a href="https://api.whatsapp.com/send?phone=5543991910271&text=Boa%20noite%2C%20Kero%20Lanche%20!">
-      <img src="./assets/whats.png">
-      <h5>Chamar no WhatsApp</h5>
-    </a>
-  </div>
-
-
-  <script type="text/javascript">
-    $('#fechacampanha').click(function(){
-      $('.campanha').css({display:'none'});
-    });
-  </script>
+</section>
+<section class="section wrap">
+<div class="choice">
+<div>
+<div class="eyebrow">A decisão mais gostosa do dia</div>
+<h2>Qual é o seu<br>time hoje?</h2>
+<p>Escolhe aí. A fome a gente resolve.</p>
+</div>
+<div>
+<div class="choice-buttons" role="group" aria-label="Escolha seu time">
+<button type="button" data-team="lanche" aria-pressed="false">🍔 Time lanche</button>
+<button type="button" data-team="pizza" aria-pressed="false">🍕 Time pizza</button>
+<button type="button" data-team="ambos" aria-pressed="false">Kero os dois!</button>
+</div>
+<div id="choice-result" aria-live="polite">Toque no seu time e encontre inspiração para o pedido.</div>
+</div>
+</div>
+</section>
+<section class="wrap section social" id="conecte">
+<div class="social-box">
+<div class="eyebrow">Tem fome no seu feed</div>
+<h2>Segue o Kero.<br>A vontade vem junto.</h2>
+<p>Destaques, novidades e aquela foto que faz você mudar os planos do jantar.</p>
+<a class="text-link" href="https://www.instagram.com/kerolanchesertanopolis/" target="_blank" rel="noopener noreferrer">Ver o Instagram ↗</a>
+</div>
+<div class="social-box dark">
+<div class="eyebrow">Pedido com uma boa conversa</div>
+<h2>Prefere chamar<br>no WhatsApp?</h2>
+<p>Fala com a gente, tire suas dúvidas e combine o seu pedido.</p>
+<a class="btn yellow" href="https://wa.me/5543991910271?text=Oi%2C%20Kero!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer">Chamar o Kero ↗</a>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="footer-top">
+<a class="brand" href="#">
+<!-- FOTO: substitua assets/hamburguinho_transparente.png mantendo o nome, ou altere o src abaixo. -->
+<img src="assets/hamburguinho_transparente.png" alt="">
+<div>
+<b>KERO</b>
+<small>DELIVERY</small>
+</div>
+</a>
+<p>Lanches e pizzas • Somente delivery<br>Av 06 de Junho, 602 (Shopping Avenida) Sertanópolis — Paraná</p>
+<a class="text-link" href="https://kerolanchesertanopolis.menudino.com">Seu próximo pedido começa aqui ↗</a>
+</div>
+<div class="footnote">
+<span>© <span id="year">2026</span> Kero Delivery. Deu fome? Deu Kero.</span>
+<span>Sabores, opções e preços atualizados no cardápio online.</span>
+</div>
+</div>
+</footer>
+<div class="mobile-order" aria-label="Peça agora">
+<a class="btn yellow" href="https://kerolanchesertanopolis.menudino.com">Abrir App ↗</a>
+<a class="btn outline" href="https://wa.me/5543991910271?text=Oi%2C%20Kero!%20Quero%20fazer%20um%20pedido.">WhatsApp</a>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();const messages={lanche:'Mordida caprichada é com você! <a href="#destaques">Conhecer os lanches ↗</a>',pizza:'A turma da fatia está formada. <a href="#destaques-pizza">Conhecer as pizzas ↗</a>',ambos:'Pra que escolher? <a href="https://kerolanchesertanopolis.menudino.com">Abrir o cardápio e montar a noite ↗</a>'};document.querySelectorAll('[data-team]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-team]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.getElementById('choice-result').innerHTML=messages[button.dataset.team]}));</script>
 </body>
 </html>

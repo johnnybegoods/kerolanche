@@ -1,0 +1,9 @@
+KERO DELIVERY — ATUALIZAÇÃO
+
+Envie index.html e a pasta assets para a raiz da branch cardapio-2025 no GitHub. Mescle com a pasta assets existente; não é necessário apagar os outros arquivos.
+
+As fotos ficam separadas do HTML. Para trocá-las, substitua o arquivo mantendo o mesmo nome e pasta.
+
+Novos destaques: assets/destaquepizza1.png (Carreteiro), assets/destaquepizza2.png (Alcatra com pasta de alho), assets/destaquepizza3.png (Carne seca com pimenta biquinho).
+
+Cremosão: assets/menu/cremosao.png (sem acento e em minúsculas).

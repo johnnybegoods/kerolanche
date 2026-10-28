@@ -359,5 +359,6 @@ function show(n,manual=false){current=(n+slides.length)%slides.length;slides.for
 function label(){pause.textContent=paused?'▶ Reproduzir':'Ⅱ Pausar';pause.setAttribute('aria-label',paused?'Iniciar troca automática':'Pausar troca automática')}
 hero.querySelector('[data-prev]').onclick=()=>show(current-1,true);hero.querySelector('[data-next]').onclick=()=>show(current+1,true);dots.forEach((d,i)=>d.onclick=()=>show(i,true));pause.onclick=()=>{paused=!paused;label();schedule()};hero.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();show(current+(e.key==='ArrowRight'?1:-1),true)}});let startX=0,startY=0;hero.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX;startY=e.changedTouches[0].clientY},{passive:true});hero.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy))show(current+(dx<0?1:-1),true)},{passive:true});document.addEventListener('visibilitychange',schedule);label();schedule()})();
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01d076e721f34f6a931bb034a627958c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

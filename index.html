@@ -570,15 +570,17 @@ function payment(pending,reviewDate){screen='payment';let pix=customer.pagamento
  if(pix)$('ka-copy').onclick=async()=>{try{await navigator.clipboard.writeText('43991910271');$('ka-copy-status').textContent='Chave copiada!';}catch(e){$('ka-copy-status').textContent='Não foi possível copiar automaticamente. Selecione e copie os números da chave acima.';}};$('ka-pay-back').append(btn('← Voltar ao resumo',review));}
 // Executado dentro do assistente, mantendo seu catálogo e sua sacola.
 const API='https://keropedidosapi.johnnythejota.workers.dev';
+const testModeRequested=new URLSearchParams(location.search).get('testeKero')==='1';
+let siteTestToken=''; // Somente na memória: nunca no link, HTML ou localStorage.
 let sending=false,orderPoll=null;
-const storageKey='kero-direct-order-v1';
+const storageKey=testModeRequested?'kero-test-order-v1':'kero-direct-order-v1';
 let pendingOrder=null;
 try {pendingOrder=JSON.parse(localStorage.getItem(storageKey)||'null');} catch(e) {}
 function keepOrder(value){pendingOrder=value;try{if(value)localStorage.setItem(storageKey,JSON.stringify(value));else localStorage.removeItem(storageKey);}catch(e){}}
 async function apiCall(path,body,key){
   const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
   try{
-    const headers={};if(body)headers['Content-Type']='application/json';if(key)headers['X-Order-Key']=key;
+    const headers={};if(body&&testModeRequested){if(!siteTestToken){siteTestToken=prompt('Senha temporária do teste Kero (não é o token do Consumer):')||'';}if(!siteTestToken)throw Error('Informe a senha para enviar um pedido de teste.');headers.Authorization='Bearer '+siteTestToken;}if(body)headers['Content-Type']='application/json';if(key)headers['X-Order-Key']=key;
     const response=await fetch(API+path,{method:body?'POST':'GET',headers,body:body?JSON.stringify(body):undefined,signal:controller.signal});
     let data;try{data=await response.json();}catch(e){throw Error('O serviço não respondeu corretamente. Consulte o pedido antes de repetir.');}
     if(!response.ok)throw Object.assign(Error(data.message||'Não foi possível concluir.'),{status:response.status});
@@ -588,8 +590,9 @@ async function apiCall(path,body,key){
 function orderStatusName(status){const s=String(status).toLowerCase();return ({placed:'Aguardando confirmação do Kero',confirmed:'Confirmado pelo Kero',preparing:'Em preparo',dispatched:'Saiu para entrega',delivered:'Entregue',concluded:'Concluído',cancelled:'Cancelado',canceled:'Cancelado'})[s]||'Atualização do Kero: '+status;}
 function trackedOrder(data){
   screen='tracking';if(orderPoll)clearInterval(orderPoll);
-  const paymentKind=pendingOrder?.payment;
+  const paymentKind=data.testMode?'Dinheiro':pendingOrder?.payment;
   put('<h2>Pedido '+esc(data.displayId)+' recebido pela API</h2><p id="ka-order-state" role="status"></p><p>Total conferido: <strong>'+cash(data.totalCents)+'</strong></p><p>Aguarde a confirmação do Kero. Não precisa enviar o mesmo pedido pelo WhatsApp.</p><p id="ka-tracking-error" role="status"></p><div id="ka-track-actions" class="ka-actions"></div>'+(paymentKind==='Pix'?'<div class="ka-note"><strong>Pix pendente de conferência</strong><p>Chave: 43991910271<br>Elaine Cristina Iquiene</p><button id="ka-track-pix" type="button">Copiar chave Pix</button><p id="ka-track-copy" role="status"></p><p>Confira a favorecida no banco e aguarde a confirmação do pedido pelo Kero antes de pagar. Envie o comprovante pelo contato abaixo.</p></div>':''));
+  if(data.testMode){const note=document.createElement('div');note.className='ka-note';note.textContent='TESTE — NÃO PRODUZIR NEM ENTREGAR. Pedido fictício enviado à fila real do Consumer.';main.prepend(note);}
   $('ka-order-state').textContent=orderStatusName(data.status);
   const contact=document.createElement('a');contact.className='ka-send';contact.target='_blank';contact.rel='noopener noreferrer';contact.textContent='Falar sobre este pedido no WhatsApp';contact.href='https://wa.me/5543991910271?text='+encodeURIComponent('Olá! Quero falar sobre o pedido do site nº '+data.displayId+'.');$('ka-track-actions').append(contact);
   if(paymentKind==='Pix')$('ka-track-pix').onclick=async()=>{try{await navigator.clipboard.writeText('43991910271');$('ka-track-copy').textContent='Chave copiada.';}catch(e){$('ka-track-copy').textContent='Copie a chave numérica acima.';}};
@@ -598,7 +601,9 @@ function trackedOrder(data){
   orderPoll=setInterval(refresh,20000);
 }
 async function directPayment(pending,reviewDate){
+  if(testModeRequested&&(pending||customer.modo==='Retirada')){put('<h2>Teste de integração</h2><p>Para testar, escolha entrega e itens sem solicitação especial. O endereço será marcado como fictício e o pagamento deve ser dinheiro sem troco.</p>');main.append(btn('Voltar e ajustar',checkout));return;}
   if(pending||customer.modo==='Retirada'){payment(pending,reviewDate);return;}
+  if(testModeRequested&&(customer.pagamento!=='Dinheiro'||customer.troco!=='Não')){checkout();$('ka-status').textContent='No teste, selecione dinheiro sem troco. Não faça pagamentos reais.';return;}
   screen='payment';put('<h2>Enviar para o Kero</h2><p>O valor será conferido pelo sistema. O Kero confirma o recebimento e o atendimento do pedido.</p><p>Total da sacola: <strong>'+cash(total())+'</strong></p><p id="ka-status" role="alert"></p><div id="ka-direct-actions" class="ka-actions"></div>');
   const snapshot=JSON.parse(JSON.stringify({cart,customer}));
   const fingerprint=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(snapshot)))),x=>x.toString(16).padStart(2,'0')).join('');
@@ -622,17 +627,18 @@ async function directPayment(pending,reviewDate){
       }
       const result=await apiCall('/site/orders',body,pendingOrder.key);trackedOrder(result);
     }catch(e){
+      if(testModeRequested&&[401,403].includes(e.status))siteTestToken='';
       if([400,409,413,422,429,503].includes(e.status))keepOrder(null);
       // A mesma chave é preservada mesmo quando a resposta se perde após a gravação.
       if($('ka-status'))$('ka-status').textContent=e.name==='AbortError'?'O envio demorou. Consulte ou tente novamente com este mesmo botão; o identificador será mantido para evitar duplicidade.':e.message;
       send.disabled=false;
-      if(!pendingOrder&&!$('ka-manual-fallback')){const fallback=btn('Conferir com o Kero pelo WhatsApp',()=>payment(false,reviewDate));fallback.id='ka-manual-fallback';$('ka-direct-actions').append(fallback);}
+      if(!testModeRequested&&!pendingOrder&&!$('ka-manual-fallback')){const fallback=btn('Conferir com o Kero pelo WhatsApp',()=>payment(false,reviewDate));fallback.id='ka-manual-fallback';$('ka-direct-actions').append(fallback);}
     }finally{sending=false;}
   },'ka-primary');
   $('ka-direct-actions').append(send,btn('Voltar ao resumo',review));
 }
 
-function renderHours(){const banner=$('ka-hours');banner.textContent=C.hoursText();banner.dataset.open=String(C.isOpen());}
+function renderHours(){const banner=$('ka-hours');banner.textContent=testModeRequested?'MODO DE TESTE — exige senha temporária. Pedido fictício na fila real: NÃO PRODUZIR NEM ENTREGAR.':C.hoursText();banner.dataset.open=String(C.isOpen());}
  window.addEventListener('kero:offer',e=>{if(!['pizza','lanche'].includes(e.detail?.kind))return;oldFocus=document.activeElement;if(!dialog.open)dialog.showModal();renderHours();const o=C.PROMOS[C.day()];if(e.detail.kind==='pizza')pizzaStart(find('pizza',o.pizza).id,o.size);else startSingle(find('hamburguer',o.snack).id);});
  setInterval(()=>{renderHours();if(screen==='review'&&$('ka-summary'))$('ka-summary').textContent=message();},30000);
  renderHours();

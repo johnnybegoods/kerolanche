@@ -221,6 +221,7 @@
     
     <img id="kp-snack-img" src="assets/menu/axe-burguer.webp" alt="Axé Burguer"
      style="display:block;width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:12px;">
+
     
     🍔 Lanche do dia</span><h3 id="kp-snack"></h3><p class="kp-description">Seu lanche favorito com preço especial.</p><div id="kp-snack-price" class="kp-price"></div><p class="kp-rule">Adicionais cobrados à parte. Você confere o total antes de encaminhar o pedido.</p><button type="button" id="kp-snack-button" class="kp-cta">Eu kero esse lanche ↗</button></article>
    <article class="kp-offer kp-pizza"><span class="kp-type">
@@ -228,6 +229,7 @@
     <img id="kp-pizza-img" src="assets/menu/suprema.webp" alt="Suprema"
      style="display:block;width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:12px;">
 
+    
     🍕 Pizza do dia</span><h3 id="kp-pizza"></h3><p id="kp-size" class="kp-description"></p><div id="kp-pizza-price" class="kp-price"></div><p class="kp-rule">Promoção somente no tamanho anunciado e com sabor único. Borda e adicionais cobrados à parte.</p><button type="button" id="kp-pizza-button" class="kp-cta">Eu kero essa pizza ↗</button></article>
   </div>
   <p id="kp-hours" class="kp-hours" role="status"></p>
@@ -609,7 +611,9 @@ function renderHours(){const banner=$('ka-hours');banner.textContent=C.hoursText
 const C=window.KeroCore,$=id=>document.getElementById(id);
 const fotosPromo = {
   'Axé Burguer': 'assets/menu/axe-burguer.webp',
-  'Suprema': 'assets/menu/suprema.webp'
+  'Suprema': 'assets/menu/suprema.webp',
+  'SALADA FIT': 'assets/menu/salada fit.webp',
+  'CHEDDAR C/ BACON': 'assets/menu/cheddar com bacon.png',
 };
 
 function atualizarFoto(id, produto) {
@@ -621,8 +625,37 @@ function atualizarFoto(id, produto) {
   if (caminho) img.src = caminho;
   else img.removeAttribute('src');
 }
-function refresh(){const o=C.PROMOS[C.day()];$('kp-day').textContent=o.day;$('kp-snack').textContent=o.snack;$('kp-snack-price').textContent=C.money(o.snackPrice);$('kp-pizza').textContent=o.pizza;$('kp-size').textContent=C.SIZES[o.size]+' · Sabor único';$('kp-pizza-price').textContent=C.money(o.pizzaPrice);$('kp-hours').textContent=C.hoursText();}
-$('kp-snack-button').addEventListener('click',()=>{refresh();window.dispatchEvent(new CustomEvent('kero:offer',{detail:{kind:'lanche'}}));});
+function refresh() {
+  const o = C.PROMOS[C.day()];
+
+  $('kp-day').textContent = o.day;
+  $('kp-snack').textContent = o.snack;
+  $('kp-snack-price').textContent = C.money(o.snackPrice);
+  $('kp-pizza').textContent = o.pizza;
+  $('kp-size').textContent = C.SIZES[o.size] + ' · Sabor único';
+  $('kp-pizza-price').textContent = C.money(o.pizzaPrice);
+  $('kp-hours').textContent = C.hoursText();
+
+  const snackImg = $('kp-snack-img');
+  const pizzaImg = $('kp-pizza-img');
+
+  snackImg.src = fotosPromo[o.snack] || '';
+  snackImg.alt = o.snack;
+  snackImg.hidden = !fotosPromo[o.snack];
+  snackImg.style.display = fotosPromo[o.snack] ? 'block' : 'none';
+
+  pizzaImg.src = fotosPromo[o.pizza] || '';
+  pizzaImg.alt = o.pizza;
+  pizzaImg.hidden = !fotosPromo[o.pizza];
+  pizzaImg.style.display = fotosPromo[o.pizza] ? 'block' : 'none';
+}
+$('kp-snack-button').addEventListener('click',()=>{
+  refresh();
+  window.dispatchEvent(new CustomEvent('kero:offer',{
+    detail:{kind:'lanche'}
+  }));
+});
+
 $('kp-pizza-button').addEventListener('click',()=>{refresh();window.dispatchEvent(new CustomEvent('kero:offer',{detail:{kind:'pizza'}}));});
 refresh();setInterval(refresh,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 })();

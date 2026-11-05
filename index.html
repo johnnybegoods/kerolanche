@@ -588,15 +588,35 @@ async function apiCall(path,body,key){
   }finally{clearTimeout(timeout);}
 }
 function orderStatusName(status){const s=String(status).toLowerCase();return ({placed:'Aguardando confirmação do Kero',confirmed:'Confirmado pelo Kero',preparing:'Em preparo',dispatched:'Saiu para entrega',delivered:'Entregue',concluded:'Concluído',cancelled:'Cancelado',canceled:'Cancelado'})[s]||'Atualização do Kero: '+status;}
+
+function orderStatusMessage(status) {
+  const messages = {
+    placed: 'Aguarde a confirmação do Kero.',
+    confirmed: 'Seu pedido foi confirmado pelo Kero!',
+    preparing: 'Estamos preparando seu pedido!',
+    dispatched: 'Seu pedido saiu para entrega!',
+    delivered: 'Pedido entregue. Muito obrigado por comprar com a gente! 😉',
+    concluded: 'Muito obrigado por comprar com a gente! 😉',
+    cancelled: 'Seu pedido foi cancelado. Fale com o Kero se precisar.',
+    canceled: 'Seu pedido foi cancelado. Fale com o Kero se precisar.'
+  };
+
+  return messages[String(status).toLowerCase()]
+    || 'Fale com o Kero se precisar de ajuda com seu pedido.';
+}
+
 function trackedOrder(data){
   screen='tracking';if(orderPoll)clearInterval(orderPoll);
   const paymentKind=data.testMode?'Dinheiro':pendingOrder?.payment;
-  put('<h2>Pedido '+esc(data.displayId)+' recebido pela API</h2><p id="ka-order-state" role="status"></p><p>Total conferido: <strong>'+cash(data.totalCents)+'</strong></p><p>Aguarde a confirmação do Kero. Não precisa enviar o mesmo pedido pelo WhatsApp.</p><p id="ka-tracking-error" role="status"></p><div id="ka-track-actions" class="ka-actions"></div>'+(paymentKind==='Pix'?'<div class="ka-note"><strong>Pix pendente de conferência</strong><p>Chave: 43991910271<br>Elaine Cristina Iquiene</p><button id="ka-track-pix" type="button">Copiar chave Pix</button><p id="ka-track-copy" role="status"></p><p>Confira a favorecida no banco e aguarde a confirmação do pedido pelo Kero antes de pagar. Envie o comprovante pelo contato abaixo.</p></div>':''));
+  put('<h2>Pedido '+esc(data.displayId)+' recebido pela API</h2><p id="ka-order-state" role="status"></p><p>Total conferido: <strong>'+cash(data.totalCents)+'</strong></p><p id="ka-order-message"></p><p id="ka-tracking-error" role="status"></p><div id="ka-track-actions" class="ka-actions"></div>'+(paymentKind==='Pix'?'<div class="ka-note"><strong>Pix pendente de conferência</strong><p>Chave: 43991910271<br>Elaine Cristina Iquiene</p><button id="ka-track-pix" type="button">Copiar chave Pix</button><p id="ka-track-copy" role="status"></p><p>Confira a favorecida no banco e aguarde a confirmação do pedido pelo Kero antes de pagar. Envie o comprovante pelo contato abaixo.</p></div>':''));
   if(data.testMode){const note=document.createElement('div');note.className='ka-note';note.textContent='TESTE — NÃO PRODUZIR NEM ENTREGAR. Pedido fictício enviado à fila real do Consumer.';main.prepend(note);}
   $('ka-order-state').textContent=orderStatusName(data.status);
+  $('ka-order-message').textContent=orderStatusMessage(data.status);
   const contact=document.createElement('a');contact.className='ka-send';contact.target='_blank';contact.rel='noopener noreferrer';contact.textContent='Falar sobre este pedido no WhatsApp';contact.href='https://wa.me/5543991910271?text='+encodeURIComponent('Olá! Quero falar sobre o pedido do site nº '+data.displayId+'.');$('ka-track-actions').append(contact);
   if(paymentKind==='Pix')$('ka-track-pix').onclick=async()=>{try{await navigator.clipboard.writeText('43991910271');$('ka-track-copy').textContent='Chave copiada.';}catch(e){$('ka-track-copy').textContent='Copie a chave numérica acima.';}};
-  async function refresh(){if(screen!=='tracking'){clearInterval(orderPoll);return;}try{const next=await apiCall('/site/status',null,pendingOrder.key);$('ka-order-state').textContent=orderStatusName(next.status);$('ka-tracking-error').textContent='';}catch(e){if($('ka-tracking-error'))$('ka-tracking-error').textContent='A atualização está indisponível. Seu pedido continua registrado; fale com o Kero se precisar.';}}
+  async function refresh(){if(screen!=='tracking'){clearInterval(orderPoll);return;}try{const next=await apiCall('/site/status',null,pendingOrder.key);$('ka-order-state').textContent=orderStatusName(next.status);
+  $('ka-order-message').textContent=orderStatusMessage(next.status);
+  $('ka-tracking-error').textContent='';}catch(e){if($('ka-tracking-error'))$('ka-tracking-error').textContent='A atualização está indisponível. Seu pedido continua registrado; fale com o Kero se precisar.';}}
   $('ka-track-actions').append(btn('Atualizar situação',refresh),btn('Montar outro pedido',()=>{clearInterval(orderPoll);keepOrder(null);cart=[];customer={};home();}));
   orderPoll=setInterval(refresh,20000);
 }

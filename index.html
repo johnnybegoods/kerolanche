@@ -583,10 +583,100 @@ function checkout(){screen='checkout';if(!cart.length){home();return;}let pendin
  function toggle(){let delivery=$('ka-mode').value==='Entrega';$('ka-address').hidden=!delivery;$('ka-pickup').hidden=delivery;for(let n of ['rua','numero','bairro']){$('ka-checkout').elements[n].required=delivery;$('ka-checkout').elements[n].disabled=!delivery;}$('ka-checkout').elements.referencia.disabled=!delivery;let cashPay=$('ka-pay').value==='Dinheiro';$('ka-cash').hidden=!cashPay;$('ka-change').disabled=!cashPay;$('ka-change-label').hidden=!cashPay||$('ka-change').value!=='Sim';$('ka-change-value').required=cashPay&&$('ka-change').value==='Sim';$('ka-change-value').disabled=!$('ka-change-value').required;$('ka-pix-info').hidden=$('ka-pay').value!=='Pix';}
 }
 function message(){let lines=['PEDIDO KERO DELIVERY','Cliente: '+customer.nome,'Telefone: '+customer.telefone,...(!C.isOpen()?['ENVIADO FORA DO HORÁRIO: atendimento das 19h às 23h. Aguardar confirmação no horário de funcionamento.']:[]),''];cart.forEach((x,i)=>{let p=C.pricing(x,P);lines.push((i+1)+'. '+x.qty+'× '+label(x),...(itemDetails(x)?[itemDetails(x)]:[]),'Produto: '+cash(p.base)+(p.promo?' (promoção do dia)':''),'Borda e extras por unidade: '+cash(p.extras),'Total do item: '+cash(p.unit*x.qty),'');});let pending=cart.some(x=>x.special);lines.push((pending?'SUBTOTAL CONHECIDO: ':'TOTAL: ')+cash(total()));if(pending)lines.push('ATENÇÃO: solicitação especial pendente. Confirmar disponibilidade e valor final antes do pagamento.');lines.push(customer.modo==='Entrega'?'Entrega grátis em Sertanópolis':'Retirada na loja');if(customer.modo==='Entrega')lines.push('Endereço: '+customer.rua+', '+customer.numero+' — '+customer.bairro+(customer.referencia?'\nReferência: '+customer.referencia:''));lines.push('Pagamento: '+customer.pagamento);if(customer.pagamento==='Dinheiro')lines.push(customer.troco==='Sim'?'Troco para '+cash(customer.trocoCents)+(pending?' — confirmar o troco após definir o total final':' — levar '+cash(customer.trocoCents-total())):'Sem troco — valor exato');if(customer.pagamento==='Pix')lines.push(pending?'Pix: aguardar valor final do atendente.':'Pix: aguardando conferência do recebimento pelo Kero. Enviar comprovante nesta conversa.');lines.push('','Pedido aguardando confirmação do atendente e lançamento no PDV.');return lines.join('\n');}
-function review(){screen='review';reviewDay=C.day();let reviewDate=dateKey(),pending=cart.some(x=>x.special);put('<h2>Está tudo certinho?</h2><p>Confira os itens, observações, endereço e pagamento. O atendente confere e confirma seu pedido pelo WhatsApp.</p><div class="ka-note">Quer acumular pontos para trocar por refrigerante? A pontuação vale para pedidos finalizados no aplicativo. <a href="https://kerolanchesertanopolis.menudino.com/" target="_blank" rel="noopener noreferrer">Pedir pelo aplicativo ↗</a></div><pre id="ka-summary"></pre><label style="display:flex;gap:10px"><input type="checkbox" id="ka-reviewed">Conferi o pedido e os valores acima.</label><div id="ka-final-actions"></div><p id="ka-status" role="alert"></p><div class="ka-actions" id="ka-review-back"></div>');$('ka-summary').textContent=message();let finish=btn('Continuar para o WhatsApp',()=>{if(C.day()!==reviewDay||dateKey()!==reviewDate){review();$('ka-status').textContent='O dia mudou. Confira novamente os valores e promoções atualizados.';return;}payment(pending,reviewDate);},'ka-primary ka-full');finish.disabled=true;$('ka-reviewed').onchange=()=>finish.disabled=!$('ka-reviewed').checked;$('ka-final-actions').append(finish);$('ka-review-back').append(btn('Alterar entrega ou pagamento',checkout),btn('Adicionar mais itens',home));}
+function review(){screen='review';reviewDay=C.day();let reviewDate=dateKey(),pending=cart.some(x=>x.special);put('<h2>Está tudo certinho?</h2><p>Confira os itens, observações, endereço e pagamento. Entregas sem solicitação especial podem ser enviadas ao sistema do Kero. Retiradas e solicitações especiais são conferidas pelo WhatsApp.</p><div class="ka-note">Quer acumular pontos para trocar por refrigerante? A pontuação vale para pedidos finalizados no aplicativo. <a href="https://kerolanchesertanopolis.menudino.com/" target="_blank" rel="noopener noreferrer">Pedir pelo aplicativo ↗</a></div><pre id="ka-summary"></pre><label style="display:flex;gap:10px"><input type="checkbox" id="ka-reviewed">Conferi o pedido e os valores acima.</label><div id="ka-final-actions"></div><p id="ka-status" role="alert"></p><div class="ka-actions" id="ka-review-back"></div>');$('ka-summary').textContent=message();let finish=btn(pending||customer.modo==='Retirada'?'Encaminhar para o atendente conferir':'Continuar para enviar ao Kero',()=>{if(C.day()!==reviewDay||dateKey()!==reviewDate){review();$('ka-status').textContent='O dia mudou. Confira novamente os valores e promoções atualizados.';return;}directPayment(pending,reviewDate);},'ka-primary ka-full');finish.disabled=true;$('ka-reviewed').onchange=()=>finish.disabled=!$('ka-reviewed').checked;$('ka-final-actions').append(finish);$('ka-review-back').append(btn('Alterar entrega ou pagamento',checkout),btn('Adicionar mais itens',home));}
 function payment(pending,reviewDate){screen='payment';let pix=customer.pagamento==='Pix'&&!pending;put('<h2>'+(pix?'Pagamento por Pix':'Pronto para encaminhar?')+'</h2>'+(pix?'<div class="ka-note"><p>Total: <strong>'+cash(total())+'</strong></p><p>Chave Pix:<br><span class="ka-copy">43991910271</span></p><p>Favorecida: <strong>Elaine Cristina Iquiene</strong></p><button type="button" id="ka-copy">Copiar chave Pix</button><p id="ka-copy-status" role="status"></p><p>Confira o nome no aplicativo do banco. Envie o comprovante na mesma conversa do pedido. O pagamento depende da conferência do Kero.</p></div>':'')+(pending?'<div class="ka-note">Há solicitações especiais: o subtotal não inclui possíveis ajustes. Aguarde o atendente confirmar o valor final antes de pagar.</div>':'')+'<p>O botão abre o WhatsApp com o pedido preenchido. <strong>Você precisa tocar em enviar no WhatsApp.</strong> Depois, aguarde a confirmação do Kero.</p><a id="ka-send" class="ka-send" target="_blank" rel="noopener noreferrer">Enviar pedido pelo WhatsApp ↗</a><p id="ka-status" role="alert"></p><div class="ka-actions" id="ka-pay-back"></div>');$('ka-send').href='https://wa.me/5543991910271?text='+encodeURIComponent(message());$('ka-send').onclick=e=>{renderHours();$('ka-send').href='https://wa.me/5543991910271?text='+encodeURIComponent(message());if(C.day()!==reviewDay||dateKey()!==reviewDate){e.preventDefault();review();$('ka-status').textContent='O dia mudou. Confira novamente os valores atualizados.';}};
  if(pix)$('ka-copy').onclick=async()=>{try{await navigator.clipboard.writeText('43991910271');$('ka-copy-status').textContent='Chave copiada!';}catch(e){$('ka-copy-status').textContent='Não foi possível copiar automaticamente. Selecione e copie os números da chave acima.';}};$('ka-pay-back').append(btn('← Voltar ao resumo',review));}
-function renderHours(){const banner=$('ka-hours');banner.textContent=C.hoursText();banner.dataset.open=String(C.isOpen());}
+// Executado dentro do assistente, mantendo seu catálogo e sua sacola.
+const API='https://keropedidosapi.johnnythejota.workers.dev';
+const testModeRequested=new URLSearchParams(location.search).get('testeKero')==='1';
+let siteTestToken=''; // Somente na memória: nunca no link, HTML ou localStorage.
+let sending=false,orderPoll=null;
+const storageKey=testModeRequested?'kero-test-order-v1':'kero-direct-order-v1';
+let pendingOrder=null;
+try {pendingOrder=JSON.parse(localStorage.getItem(storageKey)||'null');} catch(e) {}
+function keepOrder(value){pendingOrder=value;try{if(value)localStorage.setItem(storageKey,JSON.stringify(value));else localStorage.removeItem(storageKey);}catch(e){}}
+async function apiCall(path,body,key){
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
+  try{
+    const headers={};if(body&&testModeRequested){if(!siteTestToken){siteTestToken=prompt('Senha temporária do teste Kero (não é o token do Consumer):')||'';}if(!siteTestToken)throw Error('Informe a senha para enviar um pedido de teste.');headers.Authorization='Bearer '+siteTestToken;}if(body)headers['Content-Type']='application/json';if(key)headers['X-Order-Key']=key;
+    const response=await fetch(API+path,{method:body?'POST':'GET',headers,body:body?JSON.stringify(body):undefined,signal:controller.signal});
+    let data;try{data=await response.json();}catch(e){throw Error('O serviço não respondeu corretamente. Consulte o pedido antes de repetir.');}
+    if(!response.ok)throw Object.assign(Error(data.message||'Não foi possível concluir.'),{status:response.status});
+    return data;
+  }finally{clearTimeout(timeout);}
+}
+function orderStatusName(status){const s=String(status).toLowerCase();return ({placed:'Aguardando confirmação do Kero',confirmed:'Confirmado pelo Kero',preparing:'Em preparo',dispatched:'Saiu para entrega',delivered:'Entregue',concluded:'Concluído',cancelled:'Cancelado',canceled:'Cancelado'})[s]||'Atualização do Kero: '+status;}
+
+function orderStatusMessage(status) {
+  const messages = {
+    placed: 'Aguarde a confirmação do Kero.',
+    confirmed: 'Seu pedido foi confirmado pelo Kero!',
+    preparing: 'Estamos preparando seu pedido!',
+    dispatched: 'Seu pedido saiu para entrega!',
+    delivered: 'Pedido entregue. Muito obrigado por comprar com a gente! 😉',
+    concluded: 'Muito obrigado por comprar com a gente! 😉',
+    cancelled: 'Seu pedido foi cancelado. Fale com o Kero se precisar.',
+    canceled: 'Seu pedido foi cancelado. Fale com o Kero se precisar.'
+  };
+
+  return messages[String(status).toLowerCase()]
+    || 'Fale com o Kero se precisar de ajuda com seu pedido.';
+}
+
+function trackedOrder(data){
+  screen='tracking';if(orderPoll)clearInterval(orderPoll);
+  const paymentKind=data.testMode?'Dinheiro':pendingOrder?.payment;
+  put('<h2>Pedido '+esc(data.displayId)+' recebido pela API</h2><p id="ka-order-state" role="status"></p><p>Total conferido: <strong>'+cash(data.totalCents)+'</strong></p><p id="ka-order-message"></p><p id="ka-tracking-error" role="status"></p><div id="ka-track-actions" class="ka-actions"></div>'+(paymentKind==='Pix'?'<div class="ka-note"><strong>Pix pendente de conferência</strong><p>Chave: 43991910271<br>Elaine Cristina Iquiene</p><button id="ka-track-pix" type="button">Copiar chave Pix</button><p id="ka-track-copy" role="status"></p><p>Confira a favorecida no banco e aguarde a confirmação do pedido pelo Kero antes de pagar. Envie o comprovante pelo contato abaixo.</p></div>':''));
+  if(data.testMode){const note=document.createElement('div');note.className='ka-note';note.textContent='TESTE — NÃO PRODUZIR NEM ENTREGAR. Pedido fictício enviado à fila real do Consumer.';main.prepend(note);}
+  $('ka-order-state').textContent=orderStatusName(data.status);
+  $('ka-order-message').textContent=orderStatusMessage(data.status);
+  const contact=document.createElement('a');contact.className='ka-send';contact.target='_blank';contact.rel='noopener noreferrer';contact.textContent='Falar sobre este pedido no WhatsApp';contact.href='https://wa.me/5543991910271?text='+encodeURIComponent('Olá! Quero falar sobre o pedido do site nº '+data.displayId+'.');$('ka-track-actions').append(contact);
+  if(paymentKind==='Pix')$('ka-track-pix').onclick=async()=>{try{await navigator.clipboard.writeText('43991910271');$('ka-track-copy').textContent='Chave copiada.';}catch(e){$('ka-track-copy').textContent='Copie a chave numérica acima.';}};
+  async function refresh(){if(screen!=='tracking'){clearInterval(orderPoll);return;}try{const next=await apiCall('/site/status',null,pendingOrder.key);$('ka-order-state').textContent=orderStatusName(next.status);
+  $('ka-order-message').textContent=orderStatusMessage(next.status);
+  $('ka-tracking-error').textContent='';}catch(e){if($('ka-tracking-error'))$('ka-tracking-error').textContent='A atualização está indisponível. Seu pedido continua registrado; fale com o Kero se precisar.';}}
+  $('ka-track-actions').append(btn('Atualizar situação',refresh),btn('Montar outro pedido',()=>{clearInterval(orderPoll);keepOrder(null);cart=[];customer={};home();}));
+  orderPoll=setInterval(refresh,20000);
+}
+async function directPayment(pending,reviewDate){
+  if(testModeRequested&&(pending||customer.modo==='Retirada')){put('<h2>Teste de integração</h2><p>Para testar, escolha entrega e itens sem solicitação especial. O endereço será marcado como fictício e o pagamento deve ser dinheiro sem troco.</p>');main.append(btn('Voltar e ajustar',checkout));return;}
+  if(pending||customer.modo==='Retirada'){payment(pending,reviewDate);return;}
+  if(testModeRequested&&(customer.pagamento!=='Dinheiro'||customer.troco!=='Não')){checkout();$('ka-status').textContent='No teste, selecione dinheiro sem troco. Não faça pagamentos reais.';return;}
+  screen='payment';put('<h2>Enviar para o Kero</h2><p>O valor será conferido pelo sistema. O Kero confirma o recebimento e o atendimento do pedido.</p><p>Total da sacola: <strong>'+cash(total())+'</strong></p><p id="ka-status" role="alert"></p><div id="ka-direct-actions" class="ka-actions"></div>');
+  const snapshot=JSON.parse(JSON.stringify({cart,customer}));
+  const fingerprint=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(snapshot)))),x=>x.toString(16).padStart(2,'0')).join('');
+  const oldPending=pendingOrder;
+  if(oldPending){
+    $('ka-status').textContent='Existe um envio anterior neste aparelho. Consulte primeiro para evitar repetir o pedido.';
+    $('ka-direct-actions').append(btn('Consultar envio anterior',async()=>{try{trackedOrder(await apiCall('/site/status',null,oldPending.key));}catch(e){$('ka-status').textContent=e.status===404?'O envio anterior não foi localizado. Se você interrompeu o envio ou mudou a sacola, confira com o Kero antes de iniciar outro.':e.message;}}),btn('Voltar ao resumo',review));
+    // Reutiliza a chave anterior: se já houver pedido, a API devolve aquele pedido.
+    // Se ainda não houver registro, o servidor valida a sacola revista pelo cliente.
+  }
+  const send=btn(oldPending?'Consultar ou retomar este envio':'Enviar pedido para o Kero',async()=>{
+    if(sending)return;
+    if(C.day()!==reviewDay||dateKey()!==reviewDate){review();$('ka-status').textContent='O dia mudou. Confira os preços novamente.';return;}
+    sending=true;send.disabled=true;
+    try {
+      const body={...snapshot,expectedTotalCents:snapshot.cart.reduce((sum,item)=>sum+C.pricing(item,P).unit*item.qty,0)};
+      if(!pendingOrder){
+        const q=await apiCall('/site/quote',body);
+        if(q.totalCents!==body.expectedTotalCents){throw Error('O catálogo foi atualizado. Fale com o Kero para conferir os valores.');}
+        keepOrder({key:crypto.randomUUID(),fingerprint,payment:customer.pagamento});
+      }
+      const result=await apiCall('/site/orders',body,pendingOrder.key);trackedOrder(result);
+    }catch(e){
+      if(testModeRequested&&[401,403].includes(e.status))siteTestToken='';
+      if([400,409,413,422,429,503].includes(e.status))keepOrder(null);
+      // A mesma chave é preservada mesmo quando a resposta se perde após a gravação.
+      if($('ka-status'))$('ka-status').textContent=e.name==='AbortError'?'O envio demorou. Consulte ou tente novamente com este mesmo botão; o identificador será mantido para evitar duplicidade.':e.message;
+      send.disabled=false;
+      if(!testModeRequested&&!pendingOrder&&!$('ka-manual-fallback')){const fallback=btn('Conferir com o Kero pelo WhatsApp',()=>payment(false,reviewDate));fallback.id='ka-manual-fallback';$('ka-direct-actions').append(fallback);}
+    }finally{sending=false;}
+  },'ka-primary');
+  $('ka-direct-actions').append(send,btn('Voltar ao resumo',review));
+}
+
+function renderHours(){const banner=$('ka-hours');banner.textContent=testModeRequested?'MODO DE TESTE — exige senha temporária. Pedido fictício na fila real: NÃO PRODUZIR NEM ENTREGAR.':C.hoursText();banner.dataset.open=String(C.isOpen());}
  window.addEventListener('kero:offer',e=>{if(!['pizza','lanche'].includes(e.detail?.kind))return;oldFocus=document.activeElement;if(!dialog.open)dialog.showModal();renderHours();const o=C.PROMOS[C.day()];if(e.detail.kind==='pizza')pizzaStart(find('pizza',o.pizza).id,o.size);else startSingle(find('hamburguer',o.snack).id);});
  setInterval(()=>{renderHours();if(screen==='review'&&$('ka-summary'))$('ka-summary').textContent=message();},30000);
  renderHours();
@@ -603,7 +693,7 @@ function renderHours(){const banner=$('ka-hours');banner.textContent=C.hoursText
   if(Object.prototype.hasOwnProperty.call(catNames,category))browse(category);else home();
  }else if(link.dataset.keroOpen==='pizza')pizzaStart();else home();
 });
- $('kero-launch').onclick=()=>{renderHours();oldFocus=document.activeElement;dialog.showModal();if(!main.innerHTML)home();else drawCart();};$('ka-close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>oldFocus?.focus());
+ $('kero-launch').onclick=()=>{renderHours();oldFocus=document.activeElement;dialog.showModal();if(pendingOrder){apiCall('/site/status',null,pendingOrder.key).then(trackedOrder).catch(()=>{home();main.prepend(btn('Consultar envio anterior',()=>directPayment(false,dateKey()),'ka-primary'));});}else if(!main.innerHTML)home();else drawCart();};$('ka-close').onclick=()=>dialog.close();dialog.addEventListener('close',()=>oldFocus?.focus());
 })();
 </script>
 <script>(function(){

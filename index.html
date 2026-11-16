@@ -640,7 +640,7 @@ function trackedOrder(data){
   $('ka-track-actions').append(btn('Atualizar situação',refresh),btn('Montar outro pedido',()=>{clearInterval(orderPoll);keepOrder(null);cart=[];customer={};home();}));
   orderPoll=setInterval(refresh,20000);
 }
-async async function directPayment(pending,reviewDate){
+async function directPayment(pending,reviewDate){
   if(testModeRequested&&(pending||customer.modo==='Retirada')){put('<h2>Teste de integração</h2><p>Para testar, escolha entrega e itens sem solicitação especial. O endereço será marcado como fictício e o pagamento deve ser dinheiro sem troco.</p>');main.append(btn('Voltar e ajustar',checkout));return;}
   if(pending||customer.modo==='Retirada'){payment(pending,reviewDate);return;}
   if(testModeRequested&&(customer.pagamento!=='Dinheiro'||customer.troco!=='Não')){checkout();$('ka-status').textContent='No teste, selecione dinheiro sem troco. Não faça pagamentos reais.';return;}

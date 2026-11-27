@@ -645,7 +645,7 @@ function customize(){screen='custom';let pizza=byId(draft.ids[0]).category==='pi
 function afterAdd(){screen='after';put('<small>JÁ ESTÁ NA SACOLA</small><h2>Uma bebida para acompanhar?</h2><p>Você pode incluir mais pizzas, lanches ou finalizar o pedido.</p><div class="ka-grid" id="ka-after"></div>');$('ka-after').append(btn('🥤 Escolher bebida',()=>browse('bebida'),'ka-choice ka-yellow'),btn('Já está tudo certo',checkout,'ka-choice ka-primary'),btn('🍔 Mais lanches',snackCategories,'ka-choice'),btn('🍕 Mais pizza',()=>pizzaStart(),'ka-choice'));}
 function edit(i){editing=i;draft=JSON.parse(JSON.stringify(cart[i]));customize();}
 function remember(){let f=$('ka-checkout');if(f)customer=Object.fromEntries(new FormData(f));}
-function checkout(){screen='checkout';if(!cart.length){home();return;}let pending=cart.some(x=>x.special);put('<small>ETAPA 1 DE 2 · FINALIZAÇÃO</small><h2>Como vai ser?</h2><p class="ka-note">Preencha seus dados e toque em <strong>Conferir pedido completo</strong> abaixo. Depois você poderá confirmar o envio ao Kero.</p><form id="ka-checkout"><label>Seu nome<input name="nome" required maxlength="80" autocomplete="name"></label><label>Telefone / WhatsApp com DDD<input name="telefone" required type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="(43) 99999-9999"></label><label>Retirada ou entrega?<select name="modo" id="ka-mode"><option value="Entrega">Entrega grátis em Sertanópolis</option><option value="Retirada">Retirada na loja</option></select></label><div id="ka-address"><label>Rua ou avenida<input name="rua" maxlength="120" autocomplete="address-line1"></label><div class="ka-grid"><label>Número<input name="numero" maxlength="15" placeholder="Ou S/N"></label><label>Bairro<input name="bairro" maxlength="70"></label></div><label>Complemento / referência<input name="referencia" maxlength="160" autocomplete="address-line2"></label><p class="ka-muted">Entregas fora de Sertanópolis precisam ser combinadas com o atendente.</p></div><p id="ka-pickup" class="ka-note" hidden>Retirada: Av. 06 de Junho, 602 (Shopping Avenida), Sertanópolis.</p><label>Forma de pagamento<select name="pagamento" id="ka-pay"><option>Dinheiro</option><option>Cartão</option><option>Pix</option></select></label><div id="ka-cash"><label>Precisa de troco?<select name="troco" id="ka-change"><option value="Não">Não, vou pagar o valor exato</option><option value="Sim">Sim</option></select></label><label id="ka-change-label" hidden>Troco para quanto? (R$)<input name="valorTroco" id="ka-change-value" type="text" inputmode="decimal" placeholder="Ex.: 100,00"></label></div><div id="ka-pix-info" class="ka-note" hidden>'+(pending?'Há uma solicitação especial. Combine o valor final com o atendente antes de fazer o Pix.':'Depois de conferir o resumo, você poderá copiar a chave Pix. Envie o comprovante na conversa do WhatsApp; o Kero conferirá o recebimento.')+'</div><p id="ka-status" role="alert"></p><button class="ka-primary" type="submit">Conferir pedido completo →</button></form>');
+function checkout(){screen='checkout';if(!cart.length){home();return;}diag('checkout_open','checkout');let pending=cart.some(x=>x.special);put('<small>ETAPA 1 DE 2 · FINALIZAÇÃO</small><h2>Como vai ser?</h2><p class="ka-note">Preencha seus dados e toque em <strong>Conferir pedido completo</strong> abaixo. Depois você poderá confirmar o envio ao Kero.</p><form id="ka-checkout"><label>Seu nome<input name="nome" required maxlength="80" autocomplete="name"></label><label>Telefone / WhatsApp com DDD<input name="telefone" required type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="(43) 99999-9999"></label><label>Retirada ou entrega?<select name="modo" id="ka-mode"><option value="Entrega">Entrega grátis em Sertanópolis</option><option value="Retirada">Retirada na loja</option></select></label><div id="ka-address"><label>Rua ou avenida<input name="rua" maxlength="120" autocomplete="address-line1"></label><div class="ka-grid"><label>Número<input name="numero" maxlength="15" placeholder="Ou S/N"></label><label>Bairro<input name="bairro" maxlength="70"></label></div><label>Complemento / referência<input name="referencia" maxlength="160" autocomplete="address-line2"></label><p class="ka-muted">Entregas fora de Sertanópolis precisam ser combinadas com o atendente.</p></div><p id="ka-pickup" class="ka-note" hidden>Retirada: Av. 06 de Junho, 602 (Shopping Avenida), Sertanópolis.</p><label>Forma de pagamento<select name="pagamento" id="ka-pay"><option>Dinheiro</option><option>Cartão</option><option>Pix</option></select></label><div id="ka-cash"><label>Precisa de troco?<select name="troco" id="ka-change"><option value="Não">Não, vou pagar o valor exato</option><option value="Sim">Sim</option></select></label><label id="ka-change-label" hidden>Troco para quanto? (R$)<input name="valorTroco" id="ka-change-value" type="text" inputmode="decimal" placeholder="Ex.: 100,00"></label></div><div id="ka-pix-info" class="ka-note" hidden>'+(pending?'Há uma solicitação especial. Combine o valor final com o atendente antes de fazer o Pix.':'Depois de conferir o resumo, você poderá copiar a chave Pix. Envie o comprovante na conversa do WhatsApp; o Kero conferirá o recebimento.')+'</div><p id="ka-status" role="alert"></p><button class="ka-primary" type="submit">Conferir pedido completo →</button></form>');
  for(let [name,value] of Object.entries(customer)){let el=$('ka-checkout').elements.namedItem(name);if(el)el.value=value;}
  $('ka-mode').onchange=toggle;$('ka-pay').onchange=toggle;$('ka-change').onchange=toggle;toggle();$('ka-checkout').oninput=remember;$('ka-checkout').onchange=()=>{remember();toggle();};$('ka-checkout').onsubmit=e=>{e.preventDefault();remember();if(customer.pagamento==='Dinheiro'&&customer.troco==='Sim'){let s=(customer.valorTroco||'').trim();if(!/^\d{1,5}([.,]\d{1,2})?$/.test(s)){$('ka-status').textContent='Informe um valor de troco válido, por exemplo 100,00.';return;}let cents=Math.round(Number(s.replace(',','.'))*100);if(cents<total()){$('ka-status').textContent='O valor entregue em dinheiro precisa ser igual ou maior que o total.';return;}customer.trocoCents=cents;}
  review();};
@@ -664,6 +664,17 @@ const storageKey=testModeRequested?'kero-test-order-v1':'kero-direct-order-v1';
 let pendingOrder=null;
 try {pendingOrder=JSON.parse(localStorage.getItem(storageKey)||'null');} catch(e) {}
 function keepOrder(value){pendingOrder=value;try{if(value)localStorage.setItem(storageKey,JSON.stringify(value));else localStorage.removeItem(storageKey);}catch(e){}}
+// Diagnóstico isolado: nunca bloqueia o checkout.
+const diagSession=(()=>{try{return newOrderKey();}catch(_){return null;}})();
+function diag(event_type,stage,extra={}){try{
+  const ua=navigator.userAgent||'', ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const browser=/Edg|EdgiOS|EdgA/.test(ua)?'Edge':/Firefox|FxiOS/.test(ua)?'Firefox':/Chrome|CriOS/.test(ua)?'Chrome':/Safari/.test(ua)?'Safari':'Other';
+  const operating_system=ios?'iOS':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac/.test(ua)?'macOS':'Other';
+  const payload={session_id:diagSession,event_type,stage,browser,operating_system,device_type:ios||/Android|Mobile/.test(ua)?'mobile':'desktop',site_version:'2026.11.26.1',order_mode:extra.order_mode||null,http_status:extra.http_status||null,duration_ms:extra.duration_ms??null};
+  fetch(API+'/site/diagnostics',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{});
+}catch(_){} }
+window.addEventListener('error',()=>diag('javascript_error','page'));
+window.addEventListener('unhandledrejection',()=>diag('javascript_error','page'));
 async function apiCall(path,body,key){
   const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
   try{
@@ -722,6 +733,7 @@ async function directPayment(pending,reviewDate){
   if(testModeRequested&&(customer.pagamento!=='Dinheiro'||customer.troco!=='Não')){checkout();$('ka-status').textContent='No teste, selecione dinheiro sem troco. Não faça pagamentos reais.';return;}
   screen='payment';put('<h2>Enviar para o Kero</h2><p>O valor será conferido pelo sistema. O Kero confirma o recebimento e o atendimento do pedido.</p><p>Total da sacola: <strong>'+cash(total())+'</strong></p><p id="ka-status" role="alert"></p><div id="ka-direct-actions" class="ka-actions"></div>');
   const shownTotal=total();
+  setTimeout(()=>{try{if(screen==='payment'&&$('ka-direct-actions')&&!$('ka-direct-actions').querySelector('button.ka-primary'))diag('button_missing','checkout',{order_mode:customer.modo});}catch(_){}},500);
   const snapshot=JSON.parse(JSON.stringify({cart,customer}));
   // O identificador do envio não depende de um hash da sacola (não utilizado).
   // Cria os botões imediatamente, inclusive em navegadores sem SubtleCrypto.
@@ -736,6 +748,8 @@ async function directPayment(pending,reviewDate){
     if(sending)return;
     if(C.day()!==reviewDay||dateKey()!==reviewDate||total()!==shownTotal){review();$('ka-status').textContent='As ofertas podem ter mudado. Confira os preços novamente.';return;}
     sending=true;send.disabled=true;
+    const diagStart=Date.now();let diagStage='quote';
+    diag('send_attempt','send',{order_mode:snapshot.customer.modo});
     try {
       const body={...snapshot,expectedTotalCents:shownTotal};
       if(!pendingOrder){
@@ -743,8 +757,11 @@ async function directPayment(pending,reviewDate){
         if(q.totalCents!==body.expectedTotalCents){throw Error('O catálogo foi atualizado. Fale com o Kero para conferir os valores.');}
         keepOrder({key:newOrderKey(),payment:snapshot.customer.pagamento});
       }
-      const result=await apiCall('/site/orders',body,pendingOrder.key);trackedOrder(result);
+      diagStage='send';
+      const result=await apiCall('/site/orders',body,pendingOrder.key);
+      diag('send_success','send',{order_mode:snapshot.customer.modo,duration_ms:Date.now()-diagStart});trackedOrder(result);
     }catch(e){
+      diag(diagStage==='quote'?'quote_failed':'send_failed',diagStage,{order_mode:snapshot.customer.modo,http_status:e.status,duration_ms:Date.now()-diagStart});
       if(testModeRequested&&[401,403].includes(e.status))siteTestToken='';
       if([400,409,413,422,429,503].includes(e.status))keepOrder(null);
       // A mesma chave é preservada mesmo quando a resposta se perde após a gravação.
